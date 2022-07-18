@@ -1,9 +1,9 @@
 | URL path                    | Description           | 
 | :--------------------------:|:---------------------:| 
-| "/"                         |  Home page            | 
+| "/"                         |  Home page            |
 | "/catalog                   |  Courses Catalog      |
 | "/catalog/:coursename       |  Course details       |
-| "/new-course"               |  Create a new course  | 
+| "/new-course"               |  Create a new course  |
 | "/my-profile                |  User information     | 
 | "/katas                     |  Full list of katas   | 
 | "/kata-rush"                |  Speed Kata Game      | 
