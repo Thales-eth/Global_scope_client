@@ -24,22 +24,35 @@ const AppRoutes = () => {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/catalog' element={<Catalog />} />
-            <Route path='/catalog/:coursename ' element={<CourseDetailsPage />} />
+            <Route path='/catalog/:coursename' element={<CourseDetailsPage />} />
 
             <Route path='/new-course' element={<PrivateRoute />}>
-                <Route path='/new-course' element={<NewCoursePage />} />
+                <Route path='' element={<NewCoursePage />} />
             </Route>
 
-            <Route path='/my-profile' element={<MyProfilePage />} />
-            <Route path='/katas' element={<KatasPage />} />
-            <Route path='/kata-rush' element={<KataRushPage />} />
+            <Route path='/my-profile' element={<PrivateRoute />}>
+                <Route path='' element={<MyProfilePage />} />
+            </Route>
+
+            <Route path='/katas' element={<PrivateRoute />}>
+                <Route path='' element={<KatasPage />} />
+            </Route>
+
+            <Route path='/kata-rush' element={<PrivateRoute />}>
+                <Route path='' element={<KataRushPage />} />
+            </Route>
+
             <Route path='/about-us' element={<AboutUsPage />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/learner-stories' element={<LearnerStoriesPage />} />
             <Route path='/pricing' element={<PricingPage />} />
-            <Route path='/forum' element={<ForumPage />} />
+
+            <Route path='/forum' element={<PrivateRoute />}>
+                <Route path='' element={<ForumPage />} />
+            </Route>
+
         </Routes >
     )
 }

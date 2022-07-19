@@ -1,6 +1,11 @@
+import MyEditor from "../../components/TextEditor/TextEditor"
+
 const Catalog = () => {
     return (
-        <h1>SOY UN CATÁLOGO</h1>
+        <>
+            <h1>SOY UN CATÁLOGO</h1>
+
+        </>
     )
 }
 
