@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
-// import authService from './../../services/auth.services'
+import authService from './../../services/auth.services'
 
 import { MessageContext } from './../../contexts/userMessage.context'
 import { AuthContext } from "../../contexts/auth.context"
-=======
-import LoginForm from "../../components/LoginForm/LoginForm"
->>>>>>> 21b60edad0a38aa16ee2beae13e960f7e0356069
 
 const LoginPage = () => {
 
@@ -43,7 +39,6 @@ const LoginPage = () => {
     const { password, email } = loginData
 
     return (
-<<<<<<< HEAD
 
         <Form onSubmit={handleSubmit}>
 
@@ -63,9 +58,6 @@ const LoginPage = () => {
             </div>
 
         </Form>
-=======
-        <LoginForm />
->>>>>>> 21b60edad0a38aa16ee2beae13e960f7e0356069
     )
 }
 
