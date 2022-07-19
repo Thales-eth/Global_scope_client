@@ -24,7 +24,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/catalog' element={<Catalog />} />
-            <Route path='/catalog/:coursename ' element={<CourseDetailsPage />} />
+            <Route path='/catalog/:id' element={<CourseDetailsPage />} />
 
             <Route path='/new-course' element={<PrivateRoute />}>
                 <Route path='/new-course' element={<NewCoursePage />} />

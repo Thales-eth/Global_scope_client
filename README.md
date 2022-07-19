@@ -2,7 +2,7 @@
 | :--------------------------:|:---------------------:| 
 | "/"                         |  Home page            |
 | "/catalog                   |  Courses Catalog      |
-| "/catalog/:coursename       |  Course details       |
+| "/catalog/:course_id       |  Course details       |
 | "/new-course"               |  Create a new course  |
 | "/my-profile                |  User information     | 
 | "/katas                     |  Full list of katas   | 
