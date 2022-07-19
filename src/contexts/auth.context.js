@@ -21,14 +21,14 @@ function AuthProviderWrapper(props) {
             .verify(token)
             .then(({ data }) => {
                 setUser(data)
-                // setIsLoading(false)
+                setIsLoading(false)
             })
             .catch(err => logoutUser())
     }
 
     const logoutUser = () => {
         setUser(null)
-        // setIsLoading(false)
+        setIsLoading(false)
         localStorage.removeItem('authToken')
     }
 
