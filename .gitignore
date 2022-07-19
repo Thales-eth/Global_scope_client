@@ -6,6 +6,8 @@
 
 /build
 
+*.mp4
+
 .DS_Store
 .env.local
 .env.development.local
