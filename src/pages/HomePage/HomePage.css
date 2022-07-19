@@ -1,0 +1,64 @@
+.homeCluster {
+    font-size: 3em;
+    letter-spacing: 3px;
+    color: white;
+    position: relative;
+    /* margin-bottom: 35%;
+    margin-left: 40%; */
+}
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+}
+
+.motto {
+    margin-bottom: 20%;
+    font-size: 2.5em;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.introVideo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUp {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 1%;
+    margin-right: 1%;
+
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 2px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+}

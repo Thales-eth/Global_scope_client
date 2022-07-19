@@ -13,7 +13,7 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import LearnerStoriesPage from '../pages/LearnerStoriesPage/LearnerStoriesPage'
 import PricingPage from '../pages/PricingPage/PricingPage'
 import ForumPage from '../pages/ForumPage/ForumPage'
-import Navigation from '../components/Navigation/Navigation'
+import NavBar from '../components/NavBar/Navigation'
 
 
 
@@ -35,7 +35,7 @@ const AppRoutes = () => {
             <Route path='/learner-stories' element={<LearnerStoriesPage />} />
             <Route path='/pricing' element={<PricingPage />} />
             <Route path='/forum' element={<ForumPage />} />
-        </Routes>
+        </Routes >
     )
 }
 
