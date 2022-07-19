@@ -1,3 +1,13 @@
 span {
     color: pink;
 }
+
+a {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none !important;
+}
+
+span {
+    color: white !important;
+}
