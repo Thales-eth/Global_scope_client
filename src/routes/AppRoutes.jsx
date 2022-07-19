@@ -14,6 +14,7 @@ import LearnerStoriesPage from '../pages/LearnerStoriesPage/LearnerStoriesPage'
 import PricingPage from '../pages/PricingPage/PricingPage'
 import ForumPage from '../pages/ForumPage/ForumPage'
 import NavBar from '../components/NavBar/Navigation'
+import PrivateRoute from './PrivateRoutes'
 
 
 
@@ -24,7 +25,11 @@ const AppRoutes = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/catalog/:coursename ' element={<CourseDetailsPage />} />
-            <Route path='/new-course' element={<NewCoursePage />} />
+
+            <Route path='/new-course' element={<PrivateRoute />}>
+                <Route path='/new-course' element={<NewCoursePage />} />
+            </Route>
+
             <Route path='/my-profile' element={<MyProfilePage />} />
             <Route path='/katas' element={<KatasPage />} />
             <Route path='/kata-rush' element={<KataRushPage />} />
