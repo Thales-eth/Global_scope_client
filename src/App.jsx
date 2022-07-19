@@ -1,7 +1,7 @@
 import './App.css';
 import AppRoutes from './routes/AppRoutes';
-import NavBar from './components/NavBar/Navigation';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+// import NavBar from './components/NavBar/Navigation';
 
 function App() {
   return (

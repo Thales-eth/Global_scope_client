@@ -6,6 +6,8 @@
 
 /build
 
+/src/assets
+
 *.mp4
 
 .DS_Store

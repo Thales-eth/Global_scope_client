@@ -1,24 +1,22 @@
-<<<<<<< HEAD
 import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
-// import authService from './../../services/auth.services'
+import authService from './../../services/auth.services'
 
-import { MessageContext } from './../../contexts/userMessage.context'
+// import { MessageContext } from './../../contexts/userMessage.context'
 import { AuthContext } from "../../contexts/auth.context"
-=======
-import LoginForm from "../../components/LoginForm/LoginForm"
->>>>>>> 21b60edad0a38aa16ee2beae13e960f7e0356069
 
-const LoginPage = () => {
+const LoginForm = () => {
 
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
 
-    const { setShowMessage } = useContext(MessageContext)
+    // const { setShowMessage } = useContext(MessageContext)
+    
     const { storeToken, authenticateUser } = useContext(AuthContext)
+
     const navigate = useNavigate()
 
     const handleInputChange = e => {
@@ -34,7 +32,7 @@ const LoginPage = () => {
             .then(({ data }) => {
                 storeToken(data.authToken)
                 authenticateUser()
-                setShowMessage({ show: true, title: `Bienvenid@!`, text: 'Sesión iniciada correctamnete' })
+                // setShowMessage({ show: true, title: `Bienvenid@!`, text: 'Sesión iniciada correctamnete' })
             })
             .catch(err => console.log(err))
     }
@@ -43,10 +41,8 @@ const LoginPage = () => {
     const { password, email } = loginData
 
     return (
-<<<<<<< HEAD
 
         <Form onSubmit={handleSubmit}>
-
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -63,10 +59,7 @@ const LoginPage = () => {
             </div>
 
         </Form>
-=======
-        <LoginForm />
->>>>>>> 21b60edad0a38aa16ee2beae13e960f7e0356069
     )
 }
 
-export default LoginPage
+export default LoginForm
