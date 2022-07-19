@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import CourseService from "../../services/courses.services"
 import { Link } from "react-router-dom"
+import MyEditor from "../../components/TextEditor/TextEditor"
 
 const Catalog = () => {
 

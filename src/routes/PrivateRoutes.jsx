@@ -7,7 +7,7 @@ import Loader from "../components/Loader/Loader"
 function PrivateRoute() {
 
     const { isLoading, user } = useContext(AuthContext)
-    console.log('USER:',user)
+    
     if (isLoading) {
         return <Loader />
     }
