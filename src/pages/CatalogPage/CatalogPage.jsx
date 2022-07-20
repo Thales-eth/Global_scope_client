@@ -1,3 +1,4 @@
+import './CatalogPage.css'
 import { useEffect } from "react"
 import { useState } from "react"
 import CourseService from "../../services/courses.services"
@@ -25,13 +26,15 @@ const Catalog = () => {
     return (
         <>
             <h1>LOS CURSITOS:</h1>
-            {
-                courses.map(e => {
-                    return (
-                        <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
-                    )
-                })
-            }
+            <div className="courseCluster">
+                {
+                    courses.map(e => {
+                        return (
+                            <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
+                        )
+                    })
+                }
+            </div>
 
         </>
     )

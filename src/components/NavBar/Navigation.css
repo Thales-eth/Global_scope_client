@@ -1,5 +1,5 @@
-span {
-    color: pink;
+.main-nav {
+    background-color: black;
 }
 
 a {
@@ -10,4 +10,8 @@ a {
 
 span {
     color: white !important;
+}
+
+.logout {
+    cursor: pointer;
 }
