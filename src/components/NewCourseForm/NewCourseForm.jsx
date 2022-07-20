@@ -48,7 +48,7 @@ const NewCourseForm = () => {
 
     const imhere = content => {
         console.log('ESTOY EN EL PADRE', content)
-        setCourseData({ ...courseData, [theory]: { hola: 'hola' } })
+        setCourseData({ ...courseData, theory: content })
         console.log('DATOS: ', courseData)
 
     }
