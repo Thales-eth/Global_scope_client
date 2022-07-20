@@ -3,8 +3,16 @@
     letter-spacing: 3px;
     color: white;
     position: relative;
-    /* margin-bottom: 35%;
-    margin-left: 40%; */
+}
+
+img {
+    width: 100px;
+    margin-left: 50px;
+    transition: 0.5s;
+}
+
+img:hover {
+    width: 130px;
 }
 
 .logo {
@@ -13,10 +21,17 @@
     left: 0;
     margin-top: 1%;
     margin-left: 1%;
-    font-size: 2em;
-    font-weight: bold;
+    font-size: 1.8em;
+    text-transform: uppercase !important;
     color: white;
+    letter-spacing: 2px;
     z-index: 1;
+}
+
+.logoCluster {
+    position: fixed;
+    display: flex;
+    margin-top: 25%;
 }
 
 .motto {
@@ -61,4 +76,38 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 18px;
+    transition: 0.5s;
+}
+
+.signUp:hover {
+    border-radius: 5px;
+    font-size: 1.2em;
+    background-color: #842abe;
+    color: white;
+}
+
+.signIn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 1%;
+    margin-right: 9%;
+
+    padding: 20px;
+    color: #842abe;
+    border: 1px solid #842abe;
+    border-radius: 2px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.signIn:hover {
+    border-radius: 5px;
+    font-size: 1.2em;
+    background-color: black;
+    border-color: white;
+    color: white;
 }

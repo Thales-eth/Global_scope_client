@@ -2,13 +2,21 @@ import './App.css';
 import AppRoutes from './routes/AppRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBar from './components/NavBar/Navigation';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+
+      {
+        !window.location.href === 'http://localhost:3000/catalog' && <NavBar />
+      }
       <AppRoutes />
-    </div>
+      {
+        !window.location.href === '/' && <Footer />
+      }
+
+    </div >
   );
 }
 

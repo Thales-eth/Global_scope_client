@@ -1,0 +1,15 @@
+.footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    padding: 5px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}

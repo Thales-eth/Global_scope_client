@@ -19,7 +19,7 @@ const NavBar = () => {
     }
 
     return (
-        <Navbar bg="dark" expand="md" variant="dark" className='mb-5'>
+        <Navbar expand="md" variant="dark" className='main-nav mb-5'>
             <Container>
                 <Link to={"/"}><Navbar.Brand>&lt; Global Scope /&gt;</Navbar.Brand ></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -33,6 +33,9 @@ const NavBar = () => {
                         </Link>
                         <Link to="/katas">
                             <Nav.Link as="span">Practice Katas</Nav.Link>
+                        </Link>
+                        <Link to="/contact">
+                            <Nav.Link as="span">Contact</Nav.Link>
                         </Link>
 
 
@@ -53,7 +56,9 @@ const NavBar = () => {
                                         <Nav.Link as="span">{user.username}</Nav.Link>
                                     </Link>
 
-                                    <Nav.Link as="span" onClick={logout}>Cerrar sesión</Nav.Link>
+                                    {/* <Link> */}
+                                    <Nav.Link className='logout' as="a" onClick={logout}>Cerrar sesión</Nav.Link>
+                                    {/* </Link> */}
                                 </>
                         }
 
