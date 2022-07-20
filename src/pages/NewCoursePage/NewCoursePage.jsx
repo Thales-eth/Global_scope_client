@@ -8,7 +8,6 @@ const NewCoursePage = () => {
             <h1>NEW COURSE PAGE BELLA</h1>
             <NewCourseForm />
 
-            <TextEditor />
         </>
     )
 }
