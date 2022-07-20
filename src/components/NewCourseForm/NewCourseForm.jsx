@@ -2,6 +2,8 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useState } from "react"
 import CourseService from '../../services/courses.services'
 import { useNavigate } from 'react-router-dom'
+import TextEditor from '../TextEditor/TextEditor'
+
 
 const NewCourseForm = () => {
 
@@ -16,12 +18,12 @@ const NewCourseForm = () => {
         description: '',
         programlanguage: '',
         subject: '',
-        theory: '',
+        theory: {},
         test: '',
         katas: '',
         video: '',
         resources: '',
-        certificate: ''
+        certificate: '',
     })
 
     const handleChange = e => {
@@ -39,6 +41,16 @@ const NewCourseForm = () => {
                 fireFinalActions()
             })
             .catch(ERR => console.error(ERR))
+    }
+
+    const TextContent = content => {
+    }
+
+    const imhere = content => {
+        console.log('ESTOY EN EL PADRE', content)
+        setCourseData({ ...courseData, [theory]: { hola: 'hola' } })
+        console.log('DATOS: ', courseData)
+
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = courseData
@@ -73,7 +85,8 @@ const NewCourseForm = () => {
 
             <Form.Group className="mb-3" controlId="imageUrl">
                 <Form.Label>Theory</Form.Label>
-                <Form.Control type="text" value={theory} onChange={handleChange} name="theory" />
+                <TextEditor fatherState={imhere} />
+                {/* <Form.Control type="text" value={theory} onChange={handleChange} name="theory" /> */}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="imageUrl">
@@ -96,15 +109,22 @@ const NewCourseForm = () => {
                 <Form.Control type="text" value={resources} onChange={handleChange} name="resources" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="imageUrl">
+            {/* <Form.Group className="mb-3" controlId="imageUrl">
                 <Form.Label>Theory</Form.Label>
                 <Form.Control type="text" value={theory} onChange={handleChange} name="theory" />
-            </Form.Group>
+            </Form.Group> */}
             {/* CHANGE CHECKBOX */}
             <Form.Group className="mb-3" controlId="imageUrl">
                 <Form.Label>certificate</Form.Label>
                 <Form.Control type="text" value={certificate} onChange={handleChange} name="certificate" />
             </Form.Group>
+
+            {/* <Form.Group className="mb-3" controlId="imageUrl">
+                <Form.Label>Theory</Form.Label>
+                <TextEditor type="text" value={editor} onChange={handleChange} name="editor" />
+            </Form.Group> */}
+
+
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">Create a new Course!</Button>
