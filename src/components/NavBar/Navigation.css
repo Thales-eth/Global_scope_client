@@ -6,13 +6,18 @@
 a {
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 span {
-    color: white !important;
+    color: white;
 }
 
 .logout {
     cursor: pointer;
+}
+
+.navpepe {
+    width: 30px;
+    border-radius: 50%;
 }

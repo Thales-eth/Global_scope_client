@@ -5,8 +5,8 @@ class CourseServices {
     constructor() {
 
         this.api = axios.create({
-            // baseURL: `${process.env.REACT_APP_API_URL}/coasters`
-            baseURL: `http://localhost:5005/api`
+
+            baseURL: `${process.env.REACT_APP_API_URL}`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -14,6 +14,7 @@ class CourseServices {
             const storedToken = localStorage.getItem("authToken");
 
             if (storedToken) {
+
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
 

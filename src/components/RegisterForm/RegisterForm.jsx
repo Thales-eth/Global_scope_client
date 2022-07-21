@@ -21,6 +21,7 @@ const RegisterForm = () => {
     const navigate = useNavigate()
 
     const handleInputChange = e => {
+
         const { value, name } = e.target
         setSignupData({ ...signupData, [name]: value })
     }
@@ -40,7 +41,6 @@ const RegisterForm = () => {
 
     const handleFileInput = e => {
 
-        // alert('AHORA')
         setIsLoading(true)
 
         const formData = new FormData
@@ -51,16 +51,12 @@ const RegisterForm = () => {
             .then(({ data }) => {
 
                 setIsLoading(false)
-                console.log('DATOS del avatar', data.cloudinary_url)
                 setSignupData({ ...signupData, avatar: data.cloudinary_url })
-                console.log('DATOSSSSSS', signupData)
             })
             .catch(err => console.error(err))
     }
 
-
-
-    const { username, password, email, avatar } = signupData
+    const { username, password, email } = signupData
 
     return (
         <Container>

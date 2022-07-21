@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import authService from '../services/auth.services'
 
-
 const AuthContext = createContext()
 
 function AuthProviderWrapper(props) {
@@ -20,8 +19,6 @@ function AuthProviderWrapper(props) {
         authService
             .verify(token)
             .then(({ data }) => {
-
-                console.log("-----soy el data :)------", data)
                 setUser(data)
                 setIsLoading(false)
             })
@@ -29,6 +26,7 @@ function AuthProviderWrapper(props) {
     }
 
     const logoutUser = () => {
+
         setUser(null)
         setIsLoading(false)
         localStorage.removeItem('authToken')

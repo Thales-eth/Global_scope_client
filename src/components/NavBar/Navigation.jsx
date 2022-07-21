@@ -1,10 +1,8 @@
 import './Navigation.css'
 import { Nav, Navbar, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate, Link } from 'react-router-dom'
 
 const NavBar = () => {
 
@@ -17,8 +15,6 @@ const NavBar = () => {
         navigate('/')
 
     }
-
-
 
     return (
         <Navbar expand="md" variant="dark" className='main-nav mb-5' fixed='top'>
@@ -40,7 +36,6 @@ const NavBar = () => {
                             <Nav.Link as="span">Contact</Nav.Link>
                         </Link>
 
-
                         {
                             !user
                                 ?
@@ -54,17 +49,13 @@ const NavBar = () => {
                                 </>
                                 :
                                 <>
-                                    <Link to="/my-profile">
-                                        <Nav.Link as="span">{user.username}</Nav.Link>
-                                    </Link>
-
-                                    {/* <Link> */}
                                     <Nav.Link className='logout' as="a" onClick={logout}>Cerrar sesión</Nav.Link>
-                                    {/* </Link> */}
+
+                                    <Link to="/my-profile">
+                                        <img className='navpepe' src={user.avatar} alt="" />
+                                    </Link>
                                 </>
                         }
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>

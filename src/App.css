@@ -8,8 +8,8 @@
 .App {
   font-family: sans-serif;
   font-weight: 200;
-  background-color: black !important;
-  color: white !important;
+  background-color: black;
+  color: white;
   height: 100vh;
 
 }
