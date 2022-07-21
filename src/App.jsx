@@ -9,7 +9,7 @@ function App() {
     <div className="App">
 
       {
-        !window.location.href === 'http://localhost:3000/catalog' && <NavBar />
+        !window.location.href === 'http://localhost:3000/' && <NavBar />
       }
       <AppRoutes />
       {

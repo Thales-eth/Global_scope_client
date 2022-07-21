@@ -239,7 +239,7 @@ class TextEditor extends Component {
 
         this.saveContent(contentState)
 
-        const textContent = convertToRaw(contentState)
+        const textContent = convertToRaw(contentState).blocks
 
         this.props.fatherState(textContent)
 

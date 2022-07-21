@@ -17,14 +17,14 @@ const CourseDetailsPage = () => {
         CourseService
             .getOneCourse(id)
             .then(({ data }) => {
-                console.log(data)
+                console.log('DATOS EN LOS DETALLES', data)
                 setCourse(data)
             })
             .catch(err => console.log(err))
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = course
-
+    //Mira en el apartado network como se hace la petición con theory correctamente
     return (
         <>
             <h1>Course Details:</h1>
@@ -32,7 +32,11 @@ const CourseDetailsPage = () => {
             <p>{description}</p>
             <p>{programlanguage}</p>
             <p>{subject}</p>
-            <p>{theory}</p>
+            {/* {
+                { theory }.map(e => {
+                    return <p>{e.text}</p>
+                })
+            } */}
             <p>{test}</p>
             <p>{katas}</p>
             <p>{video}</p>
