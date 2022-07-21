@@ -19,7 +19,7 @@ const NavBar = () => {
     }
 
     return (
-        <Navbar expand="md" variant="dark" className='main-nav mb-5'>
+        <Navbar expand="md" variant="dark" className='main-nav mb-5' fixed='top'>
             <Container>
                 <Link to={"/"}><Navbar.Brand>&lt; Global Scope /&gt;</Navbar.Brand ></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
