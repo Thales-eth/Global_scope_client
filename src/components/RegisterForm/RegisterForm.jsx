@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import authService from './../../services/auth.services'
+import uploadServices from "./../../services/upload.services"
 
 // import { MessageContext } from './../../contexts/userMessage.context'
 
@@ -10,8 +11,11 @@ const RegisterForm = () => {
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        avatar: ''
     })
+
+    const [isLoading, setIsLoading] = useState(false)
 
     // const { setShowMessage } = useContext(MessageContext)
     const navigate = useNavigate()
@@ -34,8 +38,29 @@ const RegisterForm = () => {
             .catch(err => console.log(err))
     }
 
+    const handleFileInput = e => {
 
-    const { username, password, email } = signupData
+        // alert('AHORA')
+        setIsLoading(true)
+
+        const formData = new FormData
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadImage(formData)
+            .then(({ data }) => {
+
+                setIsLoading(false)
+                console.log('DATOS del avatar', data.cloudinary_url)
+                setSignupData({ ...signupData, avatar: data.cloudinary_url })
+                console.log('DATOSSSSSS', signupData)
+            })
+            .catch(err => console.error(err))
+    }
+
+
+
+    const { username, password, email, avatar } = signupData
 
     return (
         <Container>
@@ -60,6 +85,10 @@ const RegisterForm = () => {
                             <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
                         </Form.Group>
 
+                        <Form.Group className="mb-3" controlId="avatar">
+                            <Form.Label>Avatar</Form.Label>
+                            <Form.Control type="file" onChange={handleFileInput} name="avatar" />
+                        </Form.Group>
 
                         <div className="d-grid">
                             <Button variant="dark" type="submit">Registrarme</Button>
