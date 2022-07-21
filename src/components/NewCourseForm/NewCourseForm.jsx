@@ -18,7 +18,7 @@ const NewCourseForm = () => {
         description: '',
         programlanguage: '',
         subject: '',
-        theory: {},
+        theory: [{}],
         test: '',
         katas: '',
         video: '',
