@@ -3,6 +3,7 @@ import { useState } from "react"
 import CourseService from "../../services/courses.services"
 import { Link } from "react-router-dom"
 import MyEditor from "../../components/TextEditor/TextEditor"
+import './CatalogPage.css'
 
 const Catalog = () => {
 
@@ -24,15 +25,17 @@ const Catalog = () => {
 
     return (
         <>
-            <h1>LOS CURSITOS:</h1>
-            <div className="courseCluster">
-                {
-                    courses.map(e => {
-                        return (
-                            <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
-                        )
-                    })
-                }
+            <div className="CatalogPage">
+                <h1>LOS CURSITOS:</h1>
+                <div className="courseCluster">
+                    {
+                        courses.map(e => {
+                            return (
+                                <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
+                            )
+                        })
+                    }
+                </div>
             </div>
 
         </>

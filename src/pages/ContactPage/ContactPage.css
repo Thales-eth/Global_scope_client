@@ -1,4 +1,39 @@
-/* .contactPage {
-    padding-top: 200px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(' ./../../assets/background.jpg');
-} */
+.contactPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
+    color: white;
+}
+
+.contactPage h1 {
+    font-size: 4em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.contactPage label {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.contactPage button {
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.contactPage button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}

@@ -5,13 +5,13 @@
     position: relative;
 }
 
-img {
+.logoCluster img {
     width: 100px;
     margin-left: 50px;
     transition: 0.5s;
 }
 
-img:hover {
+.logoCluster img:hover {
     width: 130px;
 }
 
@@ -48,7 +48,7 @@ img:hover {
     position: fixed;
     bottom: 0;
     margin-bottom: 5%;
-    margin-left: 19%;
+    margin-left: 17%;
     transition: 0.5s;
 }
 
@@ -74,6 +74,7 @@ img:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .signUp {

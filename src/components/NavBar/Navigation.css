@@ -1,5 +1,6 @@
 .main-nav {
     background-color: black;
+    border-bottom: 1px solid white;
 }
 
 a {

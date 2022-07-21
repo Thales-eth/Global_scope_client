@@ -18,6 +18,8 @@ const NavBar = () => {
 
     }
 
+
+
     return (
         <Navbar expand="md" variant="dark" className='main-nav mb-5' fixed='top'>
             <Container>

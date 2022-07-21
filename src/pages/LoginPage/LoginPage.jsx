@@ -5,8 +5,10 @@ const LoginPage = () => {
 
     return (
         <>
-            <h1>Esto es la Login Page</h1>
-            <LoginForm />
+            <div className="loginPage">
+                <h1></h1>
+                <LoginForm />
+            </div>
         </>
     )
 }
