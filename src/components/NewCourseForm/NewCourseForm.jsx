@@ -1,7 +1,7 @@
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import { useState } from "react"
-import CourseService from '../../services/courses.services'
 import { useNavigate } from 'react-router-dom'
+import CourseService from '../../services/courses.services'
 import TextEditor from '../TextEditor/TextEditor'
 
 

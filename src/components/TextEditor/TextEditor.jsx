@@ -219,13 +219,14 @@ class TextEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        // this.textContent = TextContent
 
         const content = window.localStorage.getItem('content');
 
         if (content) {
             this.state.editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
-        } else {
+        }
+
+        else {
             this.state.editorState = EditorState.createEmpty();
         }
     }
@@ -235,6 +236,7 @@ class TextEditor extends Component {
     }
 
     onChange = (editorState) => {
+
         const contentState = editorState.getCurrentContent()
 
         this.saveContent(contentState)

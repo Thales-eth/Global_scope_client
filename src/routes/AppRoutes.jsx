@@ -13,10 +13,10 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import NavBar from '../components/NavBar/Navigation'
 import PrivateRoute from './PrivateRoutes'
 
-
 const AppRoutes = () => {
 
     return (
+
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/catalog' element={<Catalog />} />
@@ -24,7 +24,6 @@ const AppRoutes = () => {
             <Route path='/catalog/:id' element={<PrivateRoute />}>
                 <Route path='' element={<CourseDetailsPage />} />
             </Route>
-            {/* <Route path='/catalog/:id' element={<CourseDetailsPage />} /> */}
 
             <Route path='/new-course' element={<PrivateRoute />}>
                 <Route path='' element={<NewCoursePage />} />
