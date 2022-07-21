@@ -1,4 +1,3 @@
-import './CatalogPage.css'
 import { useEffect } from "react"
 import { useState } from "react"
 import CourseService from "../../services/courses.services"
