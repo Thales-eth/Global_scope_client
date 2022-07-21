@@ -10,6 +10,7 @@ const MyProfilePage = () => {
     console.log(user)
 
     return (
+<<<<<<< HEAD
         <>
             <div className="profilePage">
                 <img src={user.avatar} alt="pepe pic" />
@@ -17,6 +18,10 @@ const MyProfilePage = () => {
                 <p>This is your mail: {user.email}</p>
             </div>
         </>
+=======
+        <h1>MY PROFILE PAGE BELLA</h1>
+        
+>>>>>>> 0bd5d3f52d47d00d3cd460dcd2a4c01f41669bed
     )
 }
 
