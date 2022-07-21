@@ -31,14 +31,30 @@ img:hover {
 .logoCluster {
     position: fixed;
     display: flex;
-    margin-top: 25%;
+    margin-top: 18%;
 }
 
 .motto {
-    margin-bottom: 20%;
+    margin-bottom: 25%;
     font-size: 2.5em;
     letter-spacing: 3px;
     font-weight: bold;
+}
+
+.homeSpan {
+    border: 1px solid #842abe;
+    border-radius: 5px;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 5%;
+    margin-left: 19%;
+    transition: 0.5s;
+}
+
+.homeSpan:hover {
+    /* font-weight: bold; */
+    color: #842abe !important;
 }
 
 .introVideo {
@@ -56,7 +72,6 @@ img:hover {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    /* text-align: center; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +106,7 @@ img:hover {
     top: 0;
     right: 0;
     margin-top: 1%;
-    margin-right: 9%;
+    margin-right: 9.5%;
 
     padding: 20px;
     color: #842abe;
