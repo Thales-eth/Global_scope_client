@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CourseService from "../../services/courses.services"
 import Loader from "../../components/Loader/Loader"
@@ -16,6 +15,7 @@ const CourseDetailsPage = () => {
     }, [])
 
     const loadCourse = () => {
+
         CourseService
             .getOneCourse(id)
             .then(({ data }) => {

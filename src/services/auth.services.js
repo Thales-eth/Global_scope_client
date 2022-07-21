@@ -5,8 +5,7 @@ class AuthService {
     constructor() {
 
         this.api = axios.create({
-            // baseURL: `${process.env.REACT_APP_API_URL}/auth`
-            baseURL: `http://localhost:5005/api/auth`
+            baseURL: `${process.env.REACT_APP_API_URL}/auth`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -14,6 +13,7 @@ class AuthService {
             const storedToken = localStorage.getItem("authToken");
 
             if (storedToken) {
+
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
 
