@@ -5,10 +5,10 @@ import Loader from "../../components/Loader/Loader"
 
 const CourseDetailsPage = () => {
 
-    const { id } = useParams()
+    const { catalog_id } = useParams()
 
-    const [course, setCourse] = useState([])
-    // const [isLoading, setIsLoadin] = useState(true)
+    const [course, setCourse] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         loadCourse()
@@ -17,18 +17,19 @@ const CourseDetailsPage = () => {
     const loadCourse = () => {
 
         CourseService
-            .getOneCourse(id)
+            .getOneCourse(catalog_id)
             .then(({ data }) => {
                 setCourse(data)
-
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = course
+
     return (
 
-        course.length === 0 ? console.log('mientras carga', course)
+        isLoading ? <Loader />
             :
             <>
 

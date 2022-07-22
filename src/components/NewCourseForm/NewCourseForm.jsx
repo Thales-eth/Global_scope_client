@@ -50,7 +50,6 @@ const NewCourseForm = () => {
         console.log('ESTOY EN EL PADRE', content)
         setCourseData({ ...courseData, theory: content })
         console.log('DATOS: ', courseData)
-
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = courseData
