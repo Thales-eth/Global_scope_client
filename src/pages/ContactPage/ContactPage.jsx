@@ -8,6 +8,7 @@ const ContactPage = () => {
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
                         <h1>Contact us!</h1>
+                        <hr />
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>

@@ -17,3 +17,7 @@
     border-radius: 50%;
     margin-bottom: 10px;
 }
+
+.profilePage p {
+    font-size: 1.5em;
+}

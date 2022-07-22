@@ -13,7 +13,7 @@ const MyProfilePage = () => {
             <div className="profilePage">
                 <img src={avatar} alt="pepe pic" />
                 <h1>Welcome to your profile: {username}!</h1>
-                <p>This is your mail: {email}</p>
+                <p>📧 This is your mail: <b>{email}</b></p>
             </div>
         </>
     )

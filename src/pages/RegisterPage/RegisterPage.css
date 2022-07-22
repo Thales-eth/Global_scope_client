@@ -6,3 +6,33 @@
     flex-direction: column;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
 }
+
+.registerPage h1 {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.registerPage label {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.registerPage button {
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.registerPage button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { MessageContext } from './../../contexts/userMessage.context'
 import { AuthContext } from "../../contexts/auth.context"
 import authService from './../../services/auth.services'
@@ -11,6 +11,8 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
+
+    const { user, isLoading } = useContext(AuthContext)
 
     const { setShowMessage } = useContext(MessageContext)
 
@@ -32,11 +34,13 @@ const LoginForm = () => {
             .login(loginData)
             .then(({ data }) => {
                 storeToken(data.authToken)
+                console.log('ESTO ES DATA', data)
                 authenticateUser()
                 navigate('/catalog')
-                setShowMessage({ show: true, title: `Bienvenid@!`, text: 'Sesión iniciada correctamnete' })
+                setShowMessage({ show: true, title: `Hey 👋!`, text: 'Are you into katas son?' })
             })
             .catch(err => console.log(err))
+
     }
 
 
@@ -58,7 +62,7 @@ const LoginForm = () => {
                             <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
                         </Form.Group>
 
-                        <div className="d-grid">
+                        <div className="d-grid mt-4">
                             <Button variant="dark" type="submit">Acceder</Button>
                         </div>
 
