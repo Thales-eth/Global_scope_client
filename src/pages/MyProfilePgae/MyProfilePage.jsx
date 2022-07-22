@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -7,11 +7,26 @@ import CourseService from "../../services/courses.services" // Find course by id
 
 
 
+// const { avatar, username, email } = userData
+
 const MyProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-    const { avatar, username, email } = user
+    const { avatar, username, email, _id } = user
+
+    const [userData, setuserData] = useState()
+
+    const loadUser = () => {
+        userService
+            .getUser(user._id)
+            .then(({ data }) => setuserData(data))
+            .catch(err => console.error(err))
+    }
+
+    useEffect(() => {
+        loadUser()
+    }, [userData]);
 
     return (
         <>
