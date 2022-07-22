@@ -20,39 +20,29 @@ const CourseDetailsPage = () => {
             .getOneCourse(id)
             .then(({ data }) => {
                 setCourse(data)
-                console.log('DATOS EN LOS DETALLES', data)
 
             })
             .catch(err => console.log(err))
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = course
-    //Mira en el apartado network como se hace la petición con theory correctamente
     return (
 
-        console.log('CURSO ANTES DEL CONDICIONAL', course),
-
-        course === [] ? <Loader />
+        course.length === 0 ? console.log('mientras carga', course)
             :
             <>
-                {
-                    console.log('DATOS EN LOS DETALLES DEL CURSO', course)
 
-                }
-                {
-                    console.log('DATOS EN LOS DETALLES DEL CURSO', typeof course)
-                }
                 <h1>Course Details:</h1>
                 <p>{coursename}</p>
                 <p>{description}</p>
                 <p>{programlanguage}</p>
                 <p>{subject}</p>
 
-                {/* {
-                    { theory }.map(e => {
+                {
+                    theory.map(e => {
                         return <p>{e.text}</p>
                     })
-                } */}
+                }
                 <p>{test}</p>
                 <p>{katas}</p>
                 <p>{video}</p>
