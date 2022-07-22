@@ -15,8 +15,6 @@ const MyProfilePage = () => {
 
     const { avatar, username, email, _id } = user
 
-    console.log('ESTE ES EL USER', user)
-
     const [userData, setuserData] = useState()
 
     const loadUser = () => {
