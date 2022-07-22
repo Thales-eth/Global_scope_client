@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../contexts/auth.context"
@@ -14,7 +14,7 @@ const MyProfileEditForm = () => {
         avatar: ''
     })
 
-    const { user } = useContext(AuthContext)
+    const { user, setUser } = useContext(AuthContext)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -32,8 +32,6 @@ const MyProfileEditForm = () => {
         userService
             .editUser(user._id, userData)
             .then(({ data }) => {
-                console.log(user._id)
-                console.log('data:', data)
                 navigate('/my-profile')
             })
             .catch(err => console.log(err))
@@ -52,8 +50,20 @@ const MyProfileEditForm = () => {
 
                 setIsLoading(false)
                 setuserData({ ...userData, avatar: data.cloudinary_url })
+
             })
             .catch(err => console.error(err))
+    }
+
+    const loadUser = () => {
+        userService
+            .getUser(user._id)
+            .then(({ data }) => setuserData(data))
+            .catch(err => console.error(err))
+    }
+
+    const fireFinalActions = () => {
+        loadUser()
     }
 
     const { username, password, email } = userData
@@ -80,7 +90,7 @@ const MyProfileEditForm = () => {
                         </Form.Group>
 
                         <div className="d-grid">
-                            <Button variant="dark" type="submit">Edit</Button>
+                            <Button onClick={fireFinalActions} variant="dark" type="submit">Edit</Button>
                         </div>
 
                     </Form>
