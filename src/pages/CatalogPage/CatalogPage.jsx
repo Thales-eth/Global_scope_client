@@ -1,7 +1,8 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useContext, useState } from "react"
+import { AuthContext } from "../../contexts/auth.context"
 import CourseService from "../../services/courses.services"
-import { Link } from "react-router-dom"
+import userService from "../../services/user.services"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { Card, Button } from 'react-bootstrap'
 import MyEditor from "../../components/TextEditor/TextEditor"
 import './CatalogPage.css'
@@ -9,6 +10,10 @@ import './CatalogPage.css'
 const Catalog = () => {
 
     const [courses, setCourses] = useState([])
+
+    const { user, setUser } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadCourses()
@@ -22,6 +27,13 @@ const Catalog = () => {
                 setCourses(data)
             })
             .catch(err => console.log(err))
+    }
+
+    const enrollUser = (id) => {
+        userService
+            .editUser(user._id, { $addToSet: { courses: id } })
+            .then(() => navigate('/my-profile'))
+            .catch(e => console.log(e))
     }
 
     return (
@@ -38,7 +50,7 @@ const Catalog = () => {
                                             <Card.Title>Course Title</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                                             <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
-                                            {/* <Button onClick={ } variant="dark">Enroll</Button> */}
+                                            <Button onClick={() => enrollUser(e._id)} variant="dark">Enroll</Button>
                                         </Card.Body>
                                     </Card>
                                 </>

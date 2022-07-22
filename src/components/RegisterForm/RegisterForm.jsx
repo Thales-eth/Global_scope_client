@@ -10,7 +10,7 @@ const RegisterForm = () => {
         username: '',
         email: '',
         password: '',
-        avatar: ''
+        avatar: 'https://w7.pngwing.com/pngs/552/807/png-transparent-pepe-frog-illustration-gif-imgur-tenor-know-your-meme-twitch-emotes-vertebrate-meme-fictional-character.png'
     })
 
     const [isLoading, setIsLoading] = useState(false)
