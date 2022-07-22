@@ -37,7 +37,7 @@ const LoginForm = () => {
                 console.log('ESTO ES DATA', data)
                 authenticateUser()
                 navigate('/catalog')
-                setShowMessage({ show: true, title: `Hey 👋!`, text: 'Are you into katas son?' })
+                setShowMessage({ show: true, title: `Hey ${loginData.email} 👋!`, text: 'Are you into katas son?' })
             })
             .catch(err => console.log(err))
 

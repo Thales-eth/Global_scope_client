@@ -1,17 +1,20 @@
 import { useContext, useState } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from "../../contexts/auth.context"
 import authService from './../../services/auth.services'
 import uploadServices from "./../../services/upload.services"
+import userService from "../../services/user.services"
 
-const RegisterForm = () => {
+const MyProfileEditForm = () => {
 
-    const [signupData, setSignupData] = useState({
+    const [userData, setuserData] = useState({
         username: '',
         email: '',
-        password: '',
         avatar: ''
     })
+
+    const { user } = useContext(AuthContext)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -20,17 +23,18 @@ const RegisterForm = () => {
     const handleInputChange = e => {
 
         const { value, name } = e.target
-        setSignupData({ ...signupData, [name]: value })
+        setuserData({ ...userData, [name]: value })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
 
-        authService
-            .register(signupData)
+        userService
+            .editUser(user._id, userData)
             .then(({ data }) => {
+                console.log(user._id)
                 console.log('data:', data)
-                navigate('/login')
+                navigate('/my-profile')
             })
             .catch(err => console.log(err))
     }
@@ -47,12 +51,12 @@ const RegisterForm = () => {
             .then(({ data }) => {
 
                 setIsLoading(false)
-                setSignupData({ ...signupData, avatar: data.cloudinary_url })
+                setuserData({ ...userData, avatar: data.cloudinary_url })
             })
             .catch(err => console.error(err))
     }
 
-    const { username, password, email } = signupData
+    const { username, password, email } = userData
 
     return (
         <Container>
@@ -65,13 +69,6 @@ const RegisterForm = () => {
                             <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
                         </Form.Group>
 
-
-                        <Form.Group className="mb-3" controlId="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-                        </Form.Group>
-
-
                         <Form.Group className="mb-3" controlId="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
@@ -83,7 +80,7 @@ const RegisterForm = () => {
                         </Form.Group>
 
                         <div className="d-grid">
-                            <Button variant="dark" type="submit">Sign up</Button>
+                            <Button variant="dark" type="submit">Edit</Button>
                         </div>
 
                     </Form>
@@ -93,4 +90,4 @@ const RegisterForm = () => {
     )
 }
 
-export default RegisterForm
+export default MyProfileEditForm

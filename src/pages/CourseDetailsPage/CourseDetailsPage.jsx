@@ -38,11 +38,11 @@ const CourseDetailsPage = () => {
                 <p>{programlanguage}</p>
                 <p>{subject}</p>
 
-                {
+                {/* {
                     theory.map(e => {
                         return <p>{e.text}</p>
                     })
-                }
+                } */}
                 <p>{test}</p>
                 <p>{katas}</p>
                 <p>{video}</p>

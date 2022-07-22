@@ -10,6 +10,7 @@ import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import ContactPage from '../pages/ContactPage/ContactPage'
 import RegisterPage from '../pages/RegisterPage/RegisterPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
+import MyProfileEditPage from '../pages/MyProfileEditPage/MyProfileEditPage'
 import NavBar from '../components/NavBar/Navigation'
 import PrivateRoute from './PrivateRoutes'
 
@@ -43,6 +44,7 @@ const AppRoutes = () => {
 
             <Route path='/about-us' element={<AboutUsPage />} />
             <Route path='/contact' element={<ContactPage />} />
+            <Route path='/my-profile/edit' element={<MyProfileEditPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
 

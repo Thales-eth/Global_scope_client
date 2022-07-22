@@ -1,8 +1,27 @@
 .CatalogPage {
-    height: 100vh;
+    height: 150vh;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
+}
+
+.CatalogPage .title {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.courseCluster {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    margin: 10px;
 }
