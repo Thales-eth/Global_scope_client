@@ -1,16 +1,19 @@
 import './Navigation.css'
 import { Nav, Navbar, Container } from 'react-bootstrap'
 import { AuthContext } from '../../contexts/auth.context'
+import { MessageContext } from './../../contexts/userMessage.context'
 import { useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 const NavBar = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+    const { setShowMessage } = useContext(MessageContext)
+
     const navigate = useNavigate()
 
     const logout = () => {
-        // setShowMessage({ show: true, title: 'Hasta pronto!', text: 'Se ha cerrado tu sesión correctamente' })
+        setShowMessage({ show: true, title: 'See you buddy!', text: 'Keep coding :)' })
         logoutUser()
         navigate('/')
 

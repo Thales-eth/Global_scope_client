@@ -1,0 +1,11 @@
+.toast {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px solid white;
+}
+
+.toast-header {
+    background-color: black;
+}

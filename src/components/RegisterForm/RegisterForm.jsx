@@ -65,13 +65,13 @@ const RegisterForm = () => {
                     <Form onSubmit={handleSubmit}>
 
                         <Form.Group className="mb-3" controlId="username">
-                            <Form.Label>Nombre de usuario</Form.Label>
+                            <Form.Label>Username</Form.Label>
                             <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
                         </Form.Group>
 
 
                         <Form.Group className="mb-3" controlId="password">
-                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Label>Password</Form.Label>
                             <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
                         </Form.Group>
 
@@ -87,7 +87,7 @@ const RegisterForm = () => {
                         </Form.Group>
 
                         <div className="d-grid">
-                            <Button variant="dark" type="submit">Registrarme</Button>
+                            <Button variant="dark" type="submit">Sign up</Button>
                         </div>
 
                     </Form>
