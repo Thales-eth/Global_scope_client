@@ -1,8 +1,7 @@
-import { useEffect, useContext, useState } from "react"
-import { AuthContext } from "../../contexts/auth.context"
+import { useEffect } from "react"
+import { useState } from "react"
 import CourseService from "../../services/courses.services"
-import userService from "../../services/user.services"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Card, Button } from 'react-bootstrap'
 import MyEditor from "../../components/TextEditor/TextEditor"
 import './CatalogPage.css'
@@ -10,10 +9,6 @@ import './CatalogPage.css'
 const Catalog = () => {
 
     const [courses, setCourses] = useState([])
-
-    const { user, setUser } = useContext(AuthContext)
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         loadCourses()
