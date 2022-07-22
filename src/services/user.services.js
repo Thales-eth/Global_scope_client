@@ -21,6 +21,9 @@ class UserService {
             return config
         })
     }
+    getUser(user_id) {
+        return this.api.get(`/getOneUser/${user_id}`)
+    }
 
     getUser(user_id) {
         return this.api.get(`/getOneUser/${user_id}`)
