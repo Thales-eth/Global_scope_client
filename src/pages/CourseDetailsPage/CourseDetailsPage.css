@@ -1,0 +1,25 @@
+.header-one {
+    font-size:3.5em;
+}
+
+.header-two {
+    font-size: 2.5em;
+}
+
+.header-three {
+    font-size: 1.5em;
+}
+
+.BOLD {
+    font-style: bold;
+}
+
+.ITALIC {
+    font-style: italic;
+}
+
+.UNDERLINE {
+    font-style: underline;
+}
+
+/* CODE */

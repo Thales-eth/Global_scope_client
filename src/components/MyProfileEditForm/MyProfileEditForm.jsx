@@ -14,7 +14,7 @@ const MyProfileEditForm = () => {
         avatar: ''
     })
 
-    const { user, setUser } = useContext(AuthContext)
+    const { user, setUser, authenticateUser, storeToken } = useContext(AuthContext)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -31,6 +31,7 @@ const MyProfileEditForm = () => {
         userService
             .editUser(user._id, userData)
             .then(({ data }) => {
+
                 navigate('/my-profile')
             })
             .catch(err => console.log(err))
@@ -64,6 +65,14 @@ const MyProfileEditForm = () => {
     const fireFinalActions = () => {
         loadUser()
     }
+
+    useEffect(() => {
+        authenticateUser()
+        const token = localStorage.getItem("authToken")
+        storeToken(token)
+        console.log('ESTE ES EL token', token)
+    }, [user])
+
 
     const { username, password, email } = userData
 
