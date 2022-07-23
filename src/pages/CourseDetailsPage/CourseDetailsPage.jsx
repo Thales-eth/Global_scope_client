@@ -15,14 +15,13 @@ const CourseDetailsPage = () => {
     }, [])
 
     const loadCourse = () => {
-        console.log('not yet')
-        // CourseService
-        //     .getOneCourse(catalog_id)
-        //     .then(({ data }) => {
-        //         setCourse(data)
-        //         setIsLoading(false)
-        //     })
-        //     .catch(err => console.log(err))
+        CourseService
+            .getOneCourse(catalog_id)
+            .then(({ data }) => {
+                setCourse(data)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = course

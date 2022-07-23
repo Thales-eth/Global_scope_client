@@ -14,20 +14,21 @@ const MyProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-    const { avatar, username, email, _id } = user
+    const { avatar, username, email, _id, courses } = user
 
-    // const [userData, setuserData] = useState()
+    const [enrolledCourses, setCourses] = useState([])
 
-    // const loadUser = () => {
-    //     userService
-    //         .getUser(_id)
-    //         .then(({ data }) => setuserData(data))
-    //         .catch(err => console.error(err))
-    // }
+    const UserCoursesId = [...user.courses]
 
-    // useEffect(() => {
-    //     loadUser()
-    // }, [userData]);
+    for (let e of UserCoursesId) {
+        CourseService
+            .getOneCourse(...UserCoursesId)
+            .then(({ data }) => {
+                setCourses(data.coursename)
+            })
+            .catch(e => console.log(e))
+    }
+
 
     return (
         <>
@@ -37,7 +38,18 @@ const MyProfilePage = () => {
                 <p>📧 This is your mail: <b>{email}</b></p>
                 <Link to={'/my-profile/edit'}><Button variant="dark">Edit Profile</Button></Link>
                 <h5>My courses:</h5>
-                <p></p>
+                {
+                    // THIS WORKS...KINDA
+                    enrolledCourses.length > 0 && <Link to={`/catalog/${UserCoursesId[0]}`}><p>{enrolledCourses}</p></Link>
+
+                    // THIS DOESN'T QUITE WORK...
+
+                    // enrolledCourses.map(e => {
+                    //     return (
+                    //         enrolledCourses.length > 0 && <p>{enrolledCourses}</p>
+                    //     )
+                    // })
+                }
             </div>
         </>
     )
