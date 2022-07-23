@@ -19,7 +19,10 @@ const CourseDetailsPage = () => {
     }, [])
 
     const loadCourse = () => {
+<<<<<<< HEAD
         console.log('not yet')
+=======
+>>>>>>> main
         CourseService
             .getOneCourse(catalog_id)
             .then(({ data }) => {

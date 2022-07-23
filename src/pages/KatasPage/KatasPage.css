@@ -1,0 +1,37 @@
+.kataPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
+    color: white;
+}
+
+.codeMirror {
+    width: 600px;
+    text-align: left;
+    border: 3px solid black;
+    border-radius: 2px;
+}
+
+.submitKataBtn {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 2px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.submitKataBtn:hover {
+    border-radius: 5px;
+    font-size: 1.2em;
+    background-color: white;
+    border-color: black;
+    color: black;
+}
