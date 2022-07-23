@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/auth.context"
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MyProfilePage.css'
+import userService from "../../services/user.services"
 import CourseService from "../../services/courses.services" // Find course by id -> insert enrolled courses
 
 
@@ -15,18 +16,18 @@ const MyProfilePage = () => {
 
     const { avatar, username, email, _id } = user
 
-    const [userData, setuserData] = useState()
+    // const [userData, setuserData] = useState()
 
-    const loadUser = () => {
-        userService
-            .getUser(user._id)
-            .then(({ data }) => setuserData(data))
-            .catch(err => console.error(err))
-    }
+    // const loadUser = () => {
+    //     userService
+    //         .getUser(_id)
+    //         .then(({ data }) => setuserData(data))
+    //         .catch(err => console.error(err))
+    // }
 
-    useEffect(() => {
-        loadUser()
-    }, [userData]);
+    // useEffect(() => {
+    //     loadUser()
+    // }, [userData]);
 
     return (
         <>

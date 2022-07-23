@@ -1,17 +1,16 @@
-import { useEffect, useContext, useState } from "react"
-import { AuthContext } from "../../contexts/auth.context"
+import { useState, useEffect, useContext } from "react"
 import CourseService from "../../services/courses.services"
-import userService from "../../services/user.services"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Card, Button } from 'react-bootstrap'
-import MyEditor from "../../components/TextEditor/TextEditor"
+import userService from "../../services/user.services"
+import { AuthContext } from "../../contexts/auth.context"
 import './CatalogPage.css'
 
 const Catalog = () => {
 
     const [courses, setCourses] = useState([])
 
-    const { user, setUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -23,18 +22,28 @@ const Catalog = () => {
         CourseService
             .getCourses()
             .then(({ data }) => {
-                console.log('ESTOS SON LO CURSOS:', data)
                 setCourses(data)
             })
             .catch(err => console.log(err))
     }
 
-    const enrollUser = (id) => {
+    const enrollUser = (course_id) => {
+        console.log('-----------', user._id)
+        console.log('CURSO--------', course_id)
+
         userService
-            .editUser(user._id, { $addToSet: { courses: id } })
+            .editUser(user._id, { $addToSet: { courses: course_id } })
             .then(() => navigate('/my-profile'))
             .catch(e => console.log(e))
     }
+
+    // INTENTO DE REFACTORIZACIÓN FALLIDA
+    // const enrollUser = (course_id) => {
+    //     userService
+    //         .enrollUser(course_id)
+    //         .then(() => navigate('/my-profile'))
+    //         .catch(e => console.log(e))
+    // }
 
     return (
         <>
@@ -45,7 +54,7 @@ const Catalog = () => {
                         courses.map(e => {
                             return (
                                 <>
-                                    <Card style={{ width: '18rem' }}>
+                                    <Card key={e._id} style={{ width: '18rem' }}>
                                         <Card.Body>
                                             <Card.Title>Course Title</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>

@@ -72,7 +72,6 @@ const MyProfileEditForm = () => {
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
 
-                    {/* FORMULARIO FUERA DE LA PAGINA */}
                     <Form onSubmit={handleSubmit}>
 
                         <Form.Group className="mb-3" controlId="username">

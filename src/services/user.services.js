@@ -25,13 +25,14 @@ class UserService {
         return this.api.get(`/getOneUser/${user_id}`)
     }
 
-    getUser(user_id) {
-        return this.api.get(`/getOneUser/${user_id}`)
-    }
-
     editUser(user_id, userData) {
         return this.api.put(`/editUser/${user_id}`, userData)
     }
+    // REFACTORIZACIÓN ADDTOSET
+
+    // enrollUser(course_id) {
+    //     return this.api.put(`/enroll/${course_id}`)
+    // }
 }
 const userService = new UserService()
 

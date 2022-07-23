@@ -55,7 +55,7 @@ const NavBar = () => {
                                     <Nav.Link className='logout' as="a" onClick={logout}>Cerrar sesión</Nav.Link>
 
                                     <Link to="/my-profile">
-                                        <img className='navpepe' src={user.avatar} alt="" />
+                                        <img className='navLogo' src={user.avatar} alt="" />
                                     </Link>
                                 </>
                         }
