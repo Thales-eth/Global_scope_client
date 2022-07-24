@@ -48,7 +48,7 @@ const Catalog = () => {
     return (
         <>
             <div className="CatalogPage">
-                <h1 className="title">LOS CURSITOS:</h1>
+                <h1 className="title mb-5">All our courses:</h1>
                 <div className="courseCluster">
                     {
                         courses.map(e => {

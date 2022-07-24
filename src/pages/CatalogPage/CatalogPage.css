@@ -1,13 +1,16 @@
 .CatalogPage {
-    height: 150vh;
+    height: 250vh;
     /* display: flex; */
     /* justify-content: center;
     align-items: center; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./../../assets/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./../../assets/courses.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .CatalogPage .title {
-    font-size: 3em;
+    padding-top: 10%;
+    font-size: 4em;
     font-weight: bold;
     letter-spacing: 3px;
 }
@@ -21,7 +24,35 @@
 
 .card {
     background-color: black;
+    text-align: left;
     color: white;
     border: 1px solid white;
-    margin: 10px;
+    border-radius: 0;
+    margin: 20px;
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.card:hover {
+    box-shadow: -7px 7px white;
+    margin-top: 1px;
+}
+
+.card button {
+    padding: 8px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.card button:hover {
+    background-color: black;
+    border-color: white;
+    color: white;
 }
