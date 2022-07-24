@@ -29,16 +29,33 @@ const CourseDetailsPage = () => {
     }
 
     const readStyles = (text) => {
-        let style = ''
-        text.inlineStyleRanges.length === 0 ?
-            style = ''
-            :
+        let style = text.text
+        let cosa = ''
+        console.log(text)
+        if (text.inlineStyleRanges.length === 0) {
+            text.type === 'header-one' ? style = `<h1>${text.text}</h1>` : style += ''
+            text.type === 'header-two' ? style += `<h2>${text.text}</h2>` : style += ''
+            text.type === 'header-three' ? style = `<h3>${text.text}</h3>` : style += ''
+        }
+        else {
             text.inlineStyleRanges.forEach(elem => {
                 //CAMBIAR POR UN SWITCH
-                elem.style === 'BOLD' ? style += `<b>${text.text.slice(elem.offset, (elem.length + elem.offset))}</b>` : style += ``
-                elem.style === 'ITALIC' ? style += `<i>${text.text.slice(elem.offset, (elem.length + elem.offset))}</i>` : style += ``
-                elem.style === 'UNDERLINE' ? style += `<u>${text.text.slice(elem.offset, (elem.length + elem.offset))}</u>` : style += ``
+                const endSlice = elem.length + elem.offset - 1
+
+                if (elem.style === 'BOLD') {
+                    style = style.replace(text.text.slice(elem.offset, endSlice),
+                        `<b>${text.text.slice(elem.offset, endSlice)}</b>`)
+                }
+                if (elem.style === 'ITALIC') {
+                    style = style.replace(text.text.slice(elem.offset, endSlice),
+                        `<i>${text.text.slice(elem.offset, endSlice)}</i>`)
+                }
+                if (elem.style === 'UNDERLINE') {
+                    style = style.replace(text.text.slice(elem.offset, endSlice),
+                        `<u>${text.text.slice(elem.offset, endSlice)}</u>`)
+                }
             })
+        }
 
         return <div dangerouslySetInnerHTML={{ __html: style }} />
     }
