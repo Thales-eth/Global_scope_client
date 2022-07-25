@@ -10,7 +10,7 @@ const HomePage = () => {
         <>
             <div className="video-wrapper">
                 <video className='introVideo' autoPlay muted loop>
-                    <source src={introVideo} type="video/mp4" />
+                    <source src='https://res.cloudinary.com/dqwiiycdv/video/upload/v1658736387/intro_itdqvn.mp4' type="video/mp4" />
                 </video>
 
                 <Link to={'/catalog'}><span className='homeSpan'>View all Courses</span></Link>
@@ -26,9 +26,9 @@ const HomePage = () => {
                 </div>
 
                 <div className='logoCluster'>
-                    <Link to={'catalog/62d5545c9e44c1babbc983cd'}><img src={js} alt="js logo" /></Link>
-                    <Link to={'catalog/62d567fee1bd7bb74942823d'}><img src={python} alt="python logo" /></Link>
-                    <Link to={'catalog/62d820ae67c75f1d91078f4d'}><img src={css} alt="html css logo" /></Link>
+                    <Link to={'catalog/62d5545c9e44c1babbc983cd'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736331/js_mcgdil.png' alt="js logo" /></Link>
+                    <Link to={'catalog/62d567fee1bd7bb74942823d'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736342/python_zyk0je.png' alt="python logo" /></Link>
+                    <Link to={'catalog/62d820ae67c75f1d91078f4d'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736209/css_cb7fqc.png' alt="html css logo" /></Link>
                 </div>
             </div>
         </>

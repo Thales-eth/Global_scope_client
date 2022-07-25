@@ -3,7 +3,7 @@
     /* display: flex; */
     /* justify-content: center;
     align-items: center; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./../../assets/courses.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736378/courses_wpyanu.jpg');
     background-size: cover;
     background-position: center;
 }

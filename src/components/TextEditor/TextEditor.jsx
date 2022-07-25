@@ -19,13 +19,13 @@ class TextEditor extends Component {
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
 
 
-        if (content) {
-            this.state.editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
-        }
+        // if (content) {
+        //     this.state.editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
+        // }
 
-        else {
-            this.state.editorState = EditorState.createEmpty();
-        }
+        // else {
+        //     this.state.editorState = EditorState.createEmpty();
+        // }
     }
 
     _handleKeyCommand(command, editorState) {
@@ -128,7 +128,7 @@ class TextEditor extends Component {
                         handleKeyCommand={this.handleKeyCommand}
                         keyBindingFn={this.mapKeyToEditorCommand}
                         onChange={this.onChange}
-                        // placeholder="Tell a story..."
+                        placeholder="Write your content..."
                         ref="editor"
                         spellCheck={true}
                     />
