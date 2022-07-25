@@ -5,13 +5,12 @@ import Loader from "../../components/Loader/Loader"
 import 'draft-js/dist/Draft.css';
 import './CourseDetailsPage.css'
 
-
-
 const CourseDetailsPage = () => {
 
     const { catalog_id } = useParams()
 
     const [course, setCourse] = useState({})
+
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
