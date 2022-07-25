@@ -14,20 +14,32 @@ const MyProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-    const { avatar, username, email, _id, courses } = user
+    const { avatar, username, email, _id } = user
 
-    const [enrolledCourses, setCourses] = useState([])
+    const [enrolledCourses, setEnrolledCourses] = useState([])
 
-    const UserCoursesId = [...user.courses]
-
-    for (let e of UserCoursesId) {
-        CourseService
-            .getOneCourse(...UserCoursesId)
+    // const UserCoursesId = [...user.courses]
+    useEffect(() => {
+        userService
+            .getUser(_id)
             .then(({ data }) => {
-                setCourses(data.coursename)
+                setEnrolledCourses(data.courses)
+                console.log('USUARIO', data)
             })
-            .catch(e => console.log(e))
-    }
+            .catch(err => console.log(err))
+    }, [])
+
+
+
+    console.log('------------------------------------', enrolledCourses)
+    // for (let e of UserCoursesId) {
+    //     CourseService
+    //         .getOneCourse(...UserCoursesId)
+    //         .then(({ data }) => {
+    //             setEnrolledCourses(data.coursename)
+    //         })
+    //         .catch(e => console.log(e))
+    // }
 
 
     return (
@@ -40,16 +52,22 @@ const MyProfilePage = () => {
                 <h5>My courses:</h5>
                 {
                     // THIS WORKS...KINDA
-                    enrolledCourses.length > 0 && <Link to={`/catalog/${UserCoursesId[0]}`}><p>{enrolledCourses}</p></Link>
+                    // enrolledCourses.length > 0 && <Link to={`/catalog/${UserCoursesId[0]}`}><p></p></Link>
 
                     // THIS DOESN'T QUITE WORK...
 
-                    // enrolledCourses.map(e => {
-                    //     return (
-                    //         enrolledCourses.length > 0 && <p>{enrolledCourses}</p>
-                    //     )
-                    // })
                 }
+                {
+                    enrolledCourses.map((e, i) => {
+                        return (
+
+                            enrolledCourses.length > 0 && <Link to={`/catalog/${e._id[i]}`}><p>{enrolledCourses[i].coursename}</p></Link>
+
+                        )
+                    })
+                }
+
+
             </div>
         </>
     )

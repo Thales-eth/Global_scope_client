@@ -5,16 +5,20 @@ import { AuthContext } from "../../contexts/auth.context"
 import authService from './../../services/auth.services'
 import uploadServices from "./../../services/upload.services"
 import userService from "../../services/user.services"
+import { useRef } from "react"
+import Loader from "../../components/Loader/Loader"
+
+
 
 const MyProfileEditForm = () => {
+
+    const { user, setUser, authenticateUser, storeToken } = useContext(AuthContext)
 
     const [userData, setuserData] = useState({
         username: '',
         email: '',
         avatar: ''
     })
-
-    const { user, setUser, authenticateUser, storeToken } = useContext(AuthContext)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -70,42 +74,45 @@ const MyProfileEditForm = () => {
         authenticateUser()
         const token = localStorage.getItem("authToken")
         storeToken(token)
-        console.log('ESTE ES EL token', token)
+        // console.log('ESTE ES EL token', token)
+        console.log('USUARIO', user)
     }, [user])
 
 
     const { username, password, email } = userData
 
     return (
-        <Container>
-            <Row>
-                <Col md={{ span: 6, offset: 3 }}>
+        isLoading ? <Loader />
+            :
+            <Container>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
 
-                    <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
 
-                        <Form.Group className="mb-3" controlId="username">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
-                        </Form.Group>
+                            <Form.Group className="mb-3" controlId="username">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="text" defaultValue={username} onChange={handleInputChange} name="username" />
+                            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
-                        </Form.Group>
+                            <Form.Group className="mb-3" controlId="email">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" defaultValue={email} onChange={handleInputChange} name="email" />
+                            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="avatar">
-                            <Form.Label>Avatar</Form.Label>
-                            <Form.Control type="file" onChange={handleFileInput} name="avatar" />
-                        </Form.Group>
+                            <Form.Group className="mb-3" controlId="avatar">
+                                <Form.Label>Avatar</Form.Label>
+                                <Form.Control type="file" onChange={handleFileInput} name="avatar" />
+                            </Form.Group>
 
-                        <div className="d-grid">
-                            <Button onClick={fireFinalActions} variant="dark" type="submit">Edit</Button>
-                        </div>
+                            <div className="d-grid">
+                                <Button onClick={fireFinalActions} variant="dark" type="submit">Edit</Button>
+                            </div>
 
-                    </Form>
-                </Col>
-            </Row>
-        </Container >
+                        </Form>
+                    </Col>
+                </Row>
+            </Container >
     )
 }
 
