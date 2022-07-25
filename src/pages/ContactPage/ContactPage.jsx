@@ -1,4 +1,5 @@
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
+import RandomCourse from "../../components/RandomCourse/RandomCourse"
 import './ContactPage.css'
 
 const ContactPage = () => {
@@ -26,6 +27,7 @@ const ContactPage = () => {
                     </Col>
                 </Row>
             </Container >
+
         </div>
     )
 }

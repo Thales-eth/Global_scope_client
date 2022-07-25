@@ -22,6 +22,10 @@ class CourseServices {
         })
     }
 
+    getRandomCourse() {
+        return this.api.get('/getRandomCourse')
+    }
+
     getCourses() {
         return this.api.get('/getAllCourses')
     }

@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-class CodeService {
+class KataService {
 
     constructor() {
 
         this.api = axios.create({
 
-            baseURL: `${process.env.REACT_APP_API_URL}`
+            baseURL: `${process.env.REACT_APP_API_URL}/kata`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -22,16 +22,16 @@ class CodeService {
         })
     }
 
-    createFile(code) {
-        return this.api.post('/js', { code })
+    saveKata(kataData) {
+        return this.api.post('/saveKata', kataData)
     }
 
-    verifyCode() {
-        return this.api.post('/check')
+    getKata(kata_id) {
+        return this.api.get(`/getOneKata/${kata_id}`)
     }
 
 }
 
-const codeService = new CodeService()
+const kataService = new KataService()
 
-export default codeService
+export default kataService

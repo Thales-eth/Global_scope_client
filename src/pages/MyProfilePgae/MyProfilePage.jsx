@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import './MyProfilePage.css'
 import userService from "../../services/user.services"
 import CourseService from "../../services/courses.services" // Find course by id -> insert enrolled courses
-
+import RandomCourse from "../../components/RandomCourse/RandomCourse"
 
 
 // const { avatar, username, email } = userData
@@ -24,6 +24,7 @@ const MyProfilePage = () => {
         CourseService
             .getOneCourse(...UserCoursesId)
             .then(({ data }) => {
+                console.log(data)
                 setCourses(data.coursename)
             })
             .catch(e => console.log(e))
@@ -50,6 +51,7 @@ const MyProfilePage = () => {
                     //     )
                     // })
                 }
+                {/* <RandomCourse /> */}
             </div>
         </>
     )
