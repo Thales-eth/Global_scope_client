@@ -31,7 +31,7 @@ const KatasPage = () => {
                 }
                 // Do not touch anything below this line :3
                 module.exports = sum'
-                height="400px"
+                height='400px'
                 width='600px'
                 theme={okaidia}
                 extensions={[javascript({ jsx: true })]}
