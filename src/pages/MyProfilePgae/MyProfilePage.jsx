@@ -14,9 +14,9 @@ const MyProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
+    const { avatar, username, email, _id } = user
 
     const [enrolledCourses, setEnrolledCourses] = useState([])
-    const [userData, setUserData] = useState(user)
 
     // const UserCoursesId = [...user.courses]
     useEffect(() => {
@@ -25,14 +25,13 @@ const MyProfilePage = () => {
             .then(({ data }) => {
                 setEnrolledCourses(data.courses)
                 console.log('USUARIO', data)
-                setUserData(data)
             })
             .catch(err => console.log(err))
     }, [])
 
-    const { avatar, username, email, _id } = userData
 
 
+    console.log('------------------------------------', enrolledCourses)
     // for (let e of UserCoursesId) {
     //     CourseService
     //         .getOneCourse(...UserCoursesId)

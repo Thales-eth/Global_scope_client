@@ -47,12 +47,9 @@ const AppRoutes = () => {
                 <Route path='' element={<KataRushPage />} />
             </Route>
 
-            <Route path='/my-profile/edit' element={<PrivateRoute />}>
-                <Route path='' element={<MyProfileEditPage />} />
-            </Route>
-
             <Route path='/about-us' element={<AboutUsPage />} />
             <Route path='/contact' element={<ContactPage />} />
+            <Route path='/my-profile/edit' element={<MyProfileEditPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
 
