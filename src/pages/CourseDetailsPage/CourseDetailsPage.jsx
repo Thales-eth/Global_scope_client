@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 import CourseService from "../../services/courses.services"
 import Loader from "../../components/Loader/Loader"
 import 'draft-js/dist/Draft.css';
@@ -29,7 +30,6 @@ const CourseDetailsPage = () => {
 
     const readStyles = (text) => {
         let style = text.text
-        let cosa = ''
         console.log(text)
         if (text.inlineStyleRanges.length === 0) {
             text.type === 'header-one' ? style = `<h1>${text.text}</h1>` : style += ''
@@ -39,7 +39,7 @@ const CourseDetailsPage = () => {
         else {
             text.inlineStyleRanges.forEach(elem => {
                 //CAMBIAR POR UN SWITCH
-                const endSlice = elem.length + elem.offset - 1
+                const endSlice = elem.length + elem.offset
 
                 if (elem.style === 'BOLD') {
                     style = style.replace(text.text.slice(elem.offset, endSlice),
@@ -66,23 +66,47 @@ const CourseDetailsPage = () => {
         isLoading ? <Loader />
             :
             <>
+                <Container className="details">
 
-                <h1>Course Details:</h1>
-                <p>{coursename}</p>
-                <p>{description}</p>
-                <p>{programlanguage}</p>
-                <p>{subject}</p>
+                    <h1>Course Details:</h1>
+                    <Row className="topPage">
+                        <Col md={{ span: 2, offset: 0 }}>
+                            <p><b>{coursename}</b></p>
+                        </Col>
+                        <Col md={{ span: 1, offset: 0 }}>
+                            <p>{programlanguage}</p>
 
-                {
-                    theory.map(e => {
-                        return readStyles(e)
-                    })
-                }
-                <p>{test}</p>
-                <p>{katas}</p>
-                <p>{video}</p>
-                <p>{resources}</p>
-                <p>{certificate}</p>
+                        </Col>
+                        <Col md={{ span: 6, offset: 0 }}>
+                            <p>{description}</p>
+                        </Col>
+                        <Col md={{ span: 3, offset: 0 }}>
+                            <p>{subject}</p>
+
+                        </Col>
+                    </Row>
+                    <hr />
+                    {
+                        theory.map(e => {
+                            return readStyles(e)
+                        })
+                    }
+                    <p>{test}</p>
+                    {/* <iframe src="https://codesandbox.io/embed/boring-rosalind-51d51p?fontsize=14&hidenavigation=1&theme=dark"  title="boring-rosalind-51d51p" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe> */}
+                    <iframe
+                        src={katas}
+                        className="sand" title="boring-rosalind-51d51p"
+                        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+                    <p>{video}</p>
+
+                    <video autoPlay muted loop className="courseVideo">
+                        <source src={`${video}`} />
+                    </video>
+
+                    <p>{resources}</p>
+                    <p>{certificate}</p>
+                </Container>
             </>
     )
 }
