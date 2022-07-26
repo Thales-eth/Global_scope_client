@@ -1,86 +1,59 @@
-import CodeMirror from '@uiw/react-codemirror';
-import React, { useState, useContext } from 'react';
-import { Button } from 'react-bootstrap';
-import { MessageContext } from './../../contexts/userMessage.context'
-import { javascript } from '@codemirror/lang-javascript';
-import { okaidia } from '@uiw/codemirror-theme-okaidia';
-import codeService from '../../services/code.services';
+import React, { useState, useEffect } from 'react';
 import kataService from '../../services/kata.services';
+import { Link, useNavigate } from "react-router-dom"
+import { Card, Button } from 'react-bootstrap'
+import Loader from "../../components/Loader/Loader"
 import './KatasPage.css'
-import axios from 'axios';
 
 const KatasPage = () => {
 
-    const [code, setCode] = useState(`console.log('hola, bebé')`)
+    const [isLoading, setIsLoading] = useState(true)
 
-    const [answer, setAnswer] = useState(false)
+    const [katas, setKatas] = useState([])
 
-    const [message, setMessage] = useState(false)
+    useEffect(() => {
+        loadKatas()
+    }, [])
 
-    const { setShowMessage } = useContext(MessageContext)
-
-    const [kata1, setKata1] = useState({})
-
-    const kata1ID = '62ded380bf1cbf4ef8ee30e5'
-
-    kataService
-        .getKata(kata1ID)
-        .then(({ data }) => setKata1(data))
-        .catch(err => console.log(err))
-
-    const onChange = React.useCallback((value, viewUpdate) => {
-        setCode(value)
-    }, []);
-
-    const sendCode = () => {
-        codeService
-            .createFile(code)
-            .then(() => {
-                verifyCode()
+    const loadKatas = () => {
+        kataService
+            .getAllKatas()
+            .then(({ data }) => {
+                setKatas(data)
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
 
-    const verifyCode = () => {
-
-        codeService
-            .verifyCode()
-            .then(({ data }) => {
-
-                if (data.results.includes('PASS')) {
-                    setAnswer(true)
-                    setShowMessage({ show: true, title: `✔️ Lezzzgoo!!`, text: 'Keep pushing 🎉' })
-
-                }
-                if (data.results.includes('FAIL')) {
-                    setMessage(true)
-                    setShowMessage({ show: true, title: `Nice try, buddy`, text: '❌ Wrong answer tho... :)' })
-                }
-            })
-            .catch(err => console.log('OPS', err))
-    }
-
     return (
-        <div className='kataPage'>
-            <h2 className='kataTitle'>{kata1.title}</h2>
-            <CodeMirror
-                className='codeMirror'
-                value={kata1.content}
-                height='400px'
-                width='600px'
-                theme={okaidia}
-                extensions={[javascript({ jsx: true })]}
-                onChange={onChange}
-            />
+        isLoading ? <Loader />
+            :
+            <div className="katasPage">
+                <h1 className="title mt-5">Choose your kata!:</h1>
+                <div className="kataCluster">
+                    {
+                        katas.map(e => {
+                            return (
+                                <>
+                                    <Card key={e._id} style={{ width: '18rem' }}>
+                                        <Link to={`/katas/${e._id}`}>
+                                            <Card.Body>
+                                                <Card.Title>{e.title}</Card.Title>
+                                                <Card.Subtitle className="mb-2 text-muted"><i>Subtitle</i></Card.Subtitle>
+                                                <p>Difficulty</p>
+                                                {/* ADD SPECIFIC LINK TO KATA WITH ID */}
+                                                <Link to={`/katas/${e._id}`}><Button variant="dark">Code</Button></Link>
+                                            </Card.Body>
+                                        </Link>
+                                    </Card>
+                                </>
+                            )
+                        })
+                    }
+                </div>
+            </div >
+    )
 
-
-            {
-                answer ? <button className='submitKataSuccess mt-3'>Next test</button> : <button onClick={sendCode} className='submitKataBtn mt-3'>Submit your answer!</button>
-
-            }
-
-        </div>
-    );
 }
 
 export default KatasPage

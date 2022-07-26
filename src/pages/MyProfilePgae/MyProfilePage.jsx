@@ -61,7 +61,7 @@ const MyProfilePage = () => {
                     enrolledCourses.map((e, i) => {
                         return (
 
-                            enrolledCourses.length > 0 && <Link to={`/catalog/${e._id[i]}`}><p>{enrolledCourses[i].coursename}</p></Link>
+                            enrolledCourses.length > 0 && <Link to={`/catalog/${e._id}`}><p>{enrolledCourses[i].coursename}</p></Link>
 
                         )
                     })

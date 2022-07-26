@@ -10,6 +10,7 @@ import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import ContactPage from '../pages/ContactPage/ContactPage'
 import RegisterPage from '../pages/RegisterPage/RegisterPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
+import KataDetailsPage from '../pages/KataDetailsPage/KataDetailsPage'
 import MyProfileEditPage from '../pages/MyProfileEditPage/MyProfileEditPage'
 import NavBar from '../components/NavBar/Navigation'
 import PrivateRoute from './PrivateRoutes'
@@ -36,6 +37,10 @@ const AppRoutes = () => {
 
             <Route path='/katas' element={<PrivateRoute />}>
                 <Route path='' element={<KatasPage />} />
+            </Route>
+
+            <Route path='/katas/:kata_id' element={<PrivateRoute />}>
+                <Route path='' element={<KataDetailsPage />} />
             </Route>
 
             <Route path='/kata-rush' element={<PrivateRoute />}>

@@ -30,6 +30,10 @@ class KataService {
         return this.api.get(`/getOneKata/${kata_id}`)
     }
 
+    getAllKatas() {
+        return this.api.get('/getAllKatas')
+    }
+
 }
 
 const kataService = new KataService()

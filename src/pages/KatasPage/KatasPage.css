@@ -1,63 +1,13 @@
-.kataPage {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736377/background_viqild.jpg');
-    color: white;
+.katasPage {
+    height: 250vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736378/courses_wpyanu.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.kataTitle {
+.katasPage .title {
+    padding-top: 6%;
+    font-size: 4em;
     font-weight: bold;
-}
-
-.codeMirror {
-    width: 600px;
-    text-align: left;
-    border: 3px solid black;
-    border-radius: 2px;
-}
-
-.submitKataBtn {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    border: 1px solid white;
-    border-radius: 2px;
-
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 18px;
-    transition: 0.5s;
-}
-
-.submitKataBtn:active {
-    background-color: white;
-}
-
-.submitKataBtn:hover {
-    border-radius: 5px;
-    font-size: 1.2em;
-    background-color: white;
-    border-color: black;
-    color: black;
-}
-
-.submitKataSuccess {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    border: 1px solid white;
-    border-radius: 2px;
-
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 18px;
-    transition: 0.5s;
-}
-
-.submitKataSuccess:hover {
-    background-color: black;
-    border-color: white;
+    letter-spacing: 3px;
 }

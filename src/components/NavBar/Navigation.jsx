@@ -30,13 +30,16 @@ const NavBar = () => {
                             <Nav.Link as="span" className='navColor'>Home</Nav.Link>
                         </Link>
                         <Link to="/catalog">
-                            <Nav.Link as="span">Catalog</Nav.Link>
+                            <Nav.Link as="span">| Catalog |</Nav.Link>
                         </Link>
                         <Link to="/katas">
-                            <Nav.Link as="span">Practice Katas</Nav.Link>
+                            <Nav.Link as="span">| Practice Katas |</Nav.Link>
+                        </Link>
+                        <Link to="/kata-rush">
+                            <Nav.Link as="span">| Kata Rush |</Nav.Link>
                         </Link>
                         <Link to="/contact">
-                            <Nav.Link as="span">Contact</Nav.Link>
+                            <Nav.Link as="span">| Contact |</Nav.Link>
                         </Link>
 
                         {

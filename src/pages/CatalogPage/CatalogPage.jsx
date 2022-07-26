@@ -62,12 +62,13 @@ const Catalog = () => {
                                 return (
                                     <>
                                         <Card key={e._id} style={{ width: '18rem' }}>
-                                            <Card.Body>
+                                            <Link to={`/catalog/${e._id}`}> <Card.Body>
                                                 <Card.Title>Course Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Link to={`/catalog/${e._id}`}> <p>{e.coursename}</p></Link>
+                                                <Card.Subtitle className="mb-2 text-muted"><i>{e.programlanguage}</i></Card.Subtitle>
+                                                <p>{e.coursename}</p>
                                                 <Button onClick={() => enrollUser(e._id)} variant="dark">Enroll</Button>
                                             </Card.Body>
+                                            </Link>
                                         </Card>
                                     </>
                                 )

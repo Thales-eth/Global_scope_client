@@ -1,9 +1,6 @@
 import './HomePage.css'
 import { Link } from 'react-router-dom'
-import introVideo from './../../assets/intro.mp4'
-import js from './../../assets/js.png'
-import python from './../../assets/python.png'
-import css from './../../assets/css.png'
+import kataRush from './../../assets/KataRush.png'
 
 const HomePage = () => {
     return (
@@ -12,6 +9,8 @@ const HomePage = () => {
                 <video className='introVideo' autoPlay muted loop>
                     <source src='https://res.cloudinary.com/dqwiiycdv/video/upload/v1658736387/intro_itdqvn.mp4' type="video/mp4" />
                 </video>
+
+                <Link to={'/kata-rush'}><img className='kataRushLogo' src={kataRush} alt="katarush" /></Link>
 
                 <Link to={'/catalog'}><span className='homeSpan'>View all Courses</span></Link>
 

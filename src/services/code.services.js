@@ -22,12 +22,12 @@ class CodeService {
         })
     }
 
-    createFile(code) {
-        return this.api.post('/js', { code })
+    createFile(code, kataCode) {
+        return this.api.post('/js', { code, kataCode })
     }
 
-    verifyCode() {
-        return this.api.post('/check')
+    verifyCode(kataCode) {
+        return this.api.post('/check', { kataCode })
     }
 
 }
