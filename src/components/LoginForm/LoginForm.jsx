@@ -34,7 +34,6 @@ const LoginForm = () => {
             .login(loginData)
             .then(({ data }) => {
                 storeToken(data.authToken)
-                console.log('ESTO ES DATA', data)
                 authenticateUser()
                 navigate('/catalog')
                 setShowMessage({ show: true, title: `Hey ${loginData.email} 👋!`, text: 'Are you into katas son?' })
