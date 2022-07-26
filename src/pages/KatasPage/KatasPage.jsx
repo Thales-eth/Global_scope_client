@@ -19,11 +19,14 @@ const KatasPage = () => {
         kataService
             .getAllKatas()
             .then(({ data }) => {
+                console.log('ESTA ES LA DIFICULTAD', data)
                 setKatas(data)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
+
+    let difficultyLvl = ''
 
     return (
         isLoading ? <Loader />
@@ -33,6 +36,26 @@ const KatasPage = () => {
                 <div className="kataCluster">
                     {
                         katas.map(e => {
+
+                            switch (e.difficulty) {
+                                case '1':
+                                    difficultyLvl = '🔥'
+                                    break;
+
+                                case '2':
+                                    difficultyLvl = '🔥🔥'
+                                    break;
+
+                                case '3':
+                                    difficultyLvl = '🔥🔥🔥'
+
+                                    break;
+
+                                case '4':
+                                    difficultyLvl = '🔥🔥🔥🔥'
+                                    break;
+                            }
+
                             return (
                                 <>
                                     <Card key={e._id} style={{ width: '18rem' }}>
@@ -40,8 +63,7 @@ const KatasPage = () => {
                                             <Card.Body>
                                                 <Card.Title>{e.title}</Card.Title>
                                                 <Card.Subtitle className="mb-2 text-muted"><i>Subtitle</i></Card.Subtitle>
-                                                <p>Difficulty</p>
-                                                {/* ADD SPECIFIC LINK TO KATA WITH ID */}
+                                                <p>Difficulty:{difficultyLvl}</p>
                                                 <Link to={`/katas/${e._id}`}><Button variant="dark">Code</Button></Link>
                                             </Card.Body>
                                         </Link>

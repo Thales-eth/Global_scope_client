@@ -36,7 +36,7 @@ const NavBar = () => {
                             <Nav.Link as="span">| Practice Katas |</Nav.Link>
                         </Link>
                         <Link to="/kata-rush">
-                            <Nav.Link as="span">| Kata Rush |</Nav.Link>
+                            <Nav.Link as="span">| <span className='kataRushNav'> Kata Rush </span> |</Nav.Link>
                         </Link>
                         <Link to="/contact">
                             <Nav.Link as="span">| Contact |</Nav.Link>
