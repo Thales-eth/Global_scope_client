@@ -14,12 +14,9 @@ const MyProfileEditForm = () => {
 
     const { user, setUser, authenticateUser, storeToken } = useContext(AuthContext)
 
-    const [userData, setuserData] = useState({
-        username: '',
-        email: '',
-        avatar: ''
-    })
+    console.log('---soy el user----', user)
 
+    const [userData, setuserData] = useState(user)
     const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
@@ -35,7 +32,7 @@ const MyProfileEditForm = () => {
         userService
             .editUser(user._id, userData)
             .then(({ data }) => {
-
+                authenticateUser()
                 navigate('/my-profile')
             })
             .catch(err => console.log(err))
@@ -51,35 +48,42 @@ const MyProfileEditForm = () => {
         uploadServices
             .uploadImage(formData)
             .then(({ data }) => {
-
                 setIsLoading(false)
                 setuserData({ ...userData, avatar: data.cloudinary_url })
+            })
+            .catch(err => console.error(err))
+
+    }
+
+    const loadUser = () => {
+        authenticateUser()
+
+        userService
+            .getUser(user._id)
+            .then(({ data }) => {
+                setuserData(data)
+                console.log('USERDATAAA', userData)
 
             })
             .catch(err => console.error(err))
     }
 
-    const loadUser = () => {
-        userService
-            .getUser(user._id)
-            .then(({ data }) => setuserData(data))
-            .catch(err => console.error(err))
-    }
-
     const fireFinalActions = () => {
         loadUser()
+        authenticateUser()
+        
+
     }
 
     useEffect(() => {
-        authenticateUser()
-        const token = localStorage.getItem("authToken")
-        storeToken(token)
-        // console.log('ESTE ES EL token', token)
-        console.log('USUARIO', user)
-    }, [user])
+        loadUser()
+
+        // authenticateUser()
+        // console.log('USUARIO', user)
+    }, [])
 
 
-    const { username, password, email } = userData
+    const { username, email } = userData
 
     return (
         isLoading ? <Loader />
@@ -92,12 +96,12 @@ const MyProfileEditForm = () => {
 
                             <Form.Group className="mb-3" controlId="username">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" defaultValue={username} onChange={handleInputChange} name="username" />
+                                <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="email">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" defaultValue={email} onChange={handleInputChange} name="email" />
+                                <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="avatar">

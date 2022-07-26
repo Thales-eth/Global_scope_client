@@ -20,6 +20,7 @@ function AuthProviderWrapper(props) {
             .verify(token)
             .then(({ data }) => {
                 setUser(data)
+                // console.log('TOKEN???????', token)
                 setIsLoading(false)
             })
             .catch(err => logoutUser())
