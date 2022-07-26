@@ -18,12 +18,18 @@ const KataDetailsPage = () => {
 
     const { kataCode } = kata
 
+    const [isLoading, setIsLoading] = useState("")
+
     const [message, setMessage] = useState(false)
     const { setShowMessage } = useContext(MessageContext)
 
     const [answer, setAnswer] = useState(false)
 
     const [code, setCode] = useState(`console.log('hola, bebé')`)
+
+    let btnText = ""
+
+    isLoading ? btnText = 'Loading...' : btnText = 'Submit your answer!'
 
     useEffect(() => {
         loadKata()
@@ -43,6 +49,8 @@ const KataDetailsPage = () => {
     }, []);
 
     const sendCode = () => {
+        setIsLoading(true)
+
         codeService
             .createFile(code, kataCode)
             .then(({ data }) => {
@@ -58,12 +66,15 @@ const KataDetailsPage = () => {
             .verifyCode(kataCode)
             .then(({ data }) => {
 
+                setIsLoading(false)
+
                 if (data.results.includes('PASS')) {
                     setAnswer(true)
                     setShowMessage({ show: true, title: `✔️ 10/10!!`, text: 'Keep pushing 🎉' })
 
                 }
                 if (data.results.includes('FAIL')) {
+                    console.log(data.results)
                     setMessage(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: '❌ Wrong answer tho... :)' })
                 }
@@ -73,7 +84,7 @@ const KataDetailsPage = () => {
 
     return (
         <div className='kataPage'>
-            <h2 className='kataTitle'>{kata.title}</h2>
+            <p className='kataDescription'>{kata.description}</p>
             <CodeMirror
                 className='codeMirror'
                 value={kata.content}
@@ -86,7 +97,10 @@ const KataDetailsPage = () => {
 
 
             {
-                answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> : <button onClick={sendCode} className='submitKataBtn mt-3'>Submit your answer!</button>
+                answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+                    <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
+                        {btnText}
+                    </button>
 
             }
 
