@@ -34,6 +34,10 @@ class KataService {
         return this.api.get('/getAllKatas')
     }
 
+    randomKata() {
+        return this.api.get('/randomKata')
+    }
+
 }
 
 const kataService = new KataService()

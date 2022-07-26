@@ -1,5 +1,5 @@
 .profilePage {
-    height: 100vh;
+    height: 130vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,4 +20,8 @@
 
 .profilePage p {
     font-size: 1.5em;
+}
+
+.recommendationDiv {
+    display: flex;
 }

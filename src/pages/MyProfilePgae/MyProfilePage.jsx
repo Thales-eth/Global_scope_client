@@ -1,24 +1,19 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/auth.context"
-import { Button } from 'react-bootstrap'
+import { Button, Card, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MyProfilePage.css'
 import userService from "../../services/user.services"
-import CourseService from "../../services/courses.services" // Find course by id -> insert enrolled courses
+import RandomKata from "../../components/RandomKata/RandomKata"
 import RandomCourse from "../../components/RandomCourse/RandomCourse"
-
-
-// const { avatar, username, email } = userData
 
 const MyProfilePage = () => {
 
     const { user } = useContext(AuthContext)
 
-
     const [enrolledCourses, setEnrolledCourses] = useState([])
     const [userData, setUserData] = useState(user)
 
-    // const UserCoursesId = [...user.courses]
     useEffect(() => {
         userService
             .getUser(_id)
@@ -32,17 +27,6 @@ const MyProfilePage = () => {
 
     const { avatar, username, email, _id } = userData
 
-
-    // for (let e of UserCoursesId) {
-    //     CourseService
-    //         .getOneCourse(...UserCoursesId)
-    //         .then(({ data }) => {
-    //             setEnrolledCourses(data.coursename)
-    //         })
-    //         .catch(e => console.log(e))
-    // }
-
-
     return (
         <>
             <div className="profilePage">
@@ -52,13 +36,6 @@ const MyProfilePage = () => {
                 <Link to={'/my-profile/edit'}><Button variant="dark">Edit Profile</Button></Link>
                 <h5>My courses:</h5>
                 {
-                    // THIS WORKS...KINDA
-                    // enrolledCourses.length > 0 && <Link to={`/catalog/${UserCoursesId[0]}`}><p></p></Link>
-
-                    // THIS DOESN'T QUITE WORK...
-
-                }
-                {
                     enrolledCourses.map((e, i) => {
                         return (
 
@@ -67,8 +44,19 @@ const MyProfilePage = () => {
                         )
                     })
                 }
+                <div className="recommendationDiv">
+                    <Row>
+                        <Col>
+                            <h3>Try out this kata!:</h3>
+                            <RandomKata />
+                        </Col>
 
-
+                        <Col>
+                            <h3>You might enjoy this course!:</h3>
+                            <RandomCourse />
+                        </Col>
+                    </Row>
+                </div>
             </div >
         </>
     )

@@ -21,9 +21,12 @@ const KataDetailsPage = () => {
     const [isLoading, setIsLoading] = useState("")
 
     const [message, setMessage] = useState(false)
+
     const { setShowMessage } = useContext(MessageContext)
 
     const [answer, setAnswer] = useState(false)
+
+    const [answerResponse, setAnswerResponse] = useState(false)
 
     const [code, setCode] = useState(`console.log('hola, bebé')`)
 
@@ -68,16 +71,27 @@ const KataDetailsPage = () => {
 
                 setIsLoading(false)
 
+
                 if (data.results.includes('PASS')) {
                     setAnswer(true)
+                    setMessage(true)
+                    setAnswerResponse(true)
+                    console.log()
                     setShowMessage({ show: true, title: `✔️ 10/10!!`, text: 'Keep pushing 🎉' })
 
                 }
                 if (data.results.includes('FAIL')) {
                     console.log(data.results)
                     setMessage(true)
+                    setAnswerResponse(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: '❌ Wrong answer tho... :)' })
                 }
+
+                answerResponse && setTimeout(() => {
+
+                    !answer && setShowMessage({ show: true, title: `❌ Timeout`, text: 'My grandmother run faster than your code' })
+                }, 10000)
+
             })
             .catch(err => console.log('OPS', err))
     }
@@ -93,6 +107,7 @@ const KataDetailsPage = () => {
                 theme={okaidia}
                 extensions={[javascript({ jsx: true })]}
                 onChange={onChange}
+
             />
 
 
