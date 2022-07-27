@@ -34,8 +34,6 @@ const Catalog = () => {
     }
 
     const enrollUser = (course_id) => {
-        console.log('-----------', user._id)
-        console.log('CURSO--------', course_id)
 
         userService
             .editUser(user._id, { $addToSet: { courses: course_id } })
@@ -50,6 +48,7 @@ const Catalog = () => {
             <>
                 <div className="CatalogPage">
                     <h1 className="title mb-5">All our courses:</h1>
+                    <Link to={`/new-course`}><p>Create a new course</p></Link>
                     <div className="courseCluster">
                         {
                             courses.map(e => {

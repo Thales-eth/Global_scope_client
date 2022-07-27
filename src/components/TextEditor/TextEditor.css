@@ -4,7 +4,9 @@
     font-family: 'Georgia', serif;
     font-size: 14px;
     padding: 15px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    width: 640px;
+    height: 400px;
 }
 
 .RichEditor-editor {

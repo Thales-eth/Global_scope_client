@@ -30,6 +30,7 @@ const NavBar = () => {
                 .getUser(user._id)
                 .then(({ data }) => {
                     setuserData(data)
+                    console.log('------usuario-----', data)
                 })
                 .catch(err => console.error(err))
 
@@ -39,8 +40,7 @@ const NavBar = () => {
 
 
     return (
-        userData === null ? <Loader />
-            :
+        <>
             <Navbar expand="md" variant="dark" className='main-nav mb-5' fixed='top'>
                 <Container>
                     <Link to={"/"}><Navbar.Brand>&lt; Global Scope /&gt;</Navbar.Brand ></Link>
@@ -79,7 +79,7 @@ const NavBar = () => {
                                         <Nav.Link className='logout' as="a" onClick={logout}>Cerrar sesión</Nav.Link>
 
                                         <Link to="/my-profile">
-                                            <img className='navLogo' src={userData.avatar} alt="" />
+                                            <img className='navLogo' src={user.avatar} alt="" />
                                         </Link>
                                     </>
                             }
@@ -87,6 +87,8 @@ const NavBar = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar >
+
+        </>
     )
 
 }
