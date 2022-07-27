@@ -33,13 +33,8 @@ const KataRushPage = () => {
 
             :
 
-            <div className='kataRushContent'>
+            <KataTemplate katas={katas} />
 
-                <h1>Welcome to <i> Kata Rush </i> 🔥</h1>
-
-                <KataTemplate katas={katas} />
-
-            </div >
     )
 }
 
