@@ -34,7 +34,6 @@ const CourseDetailsPage = () => {
         // userService
         //     .editUser(course._id, userData)
         //     .then(({ data }) => {
-        //         authenticateUser()
         //         navigate('/my-profile')
         //     })
         //     .catch(err => console.log(err))

@@ -101,12 +101,12 @@ const NewCourseForm = () => {
 
                         <Form.Group className="mb-3" controlId="video">
                             <Form.Label>Video</Form.Label>
-                            <Form.Control type="text" value={video} onChange={handleChange} name="video" />
+                            <Form.Control type="text" placeholder='Paste the video url' value={video} onChange={handleChange} name="video" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="resources">
                             <Form.Label>Resources</Form.Label>
-                            <Form.Control type="text" placeholder='Paste the video url' value={resources} onChange={handleChange} name="resources" />
+                            <Form.Control type="text" value={resources} onChange={handleChange} name="resources" />
                         </Form.Group>
 
                         {/* <Form.Group className="mb-3" controlId="imageUrl">
