@@ -71,8 +71,6 @@ const MyProfileEditForm = () => {
     const fireFinalActions = () => {
         loadUser()
         authenticateUser()
-        
-
     }
 
     useEffect(() => {

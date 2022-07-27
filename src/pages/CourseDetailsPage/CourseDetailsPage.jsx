@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { Card, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import CourseService from "../../services/courses.services"
 import Loader from "../../components/Loader/Loader"
 import 'draft-js/dist/Draft.css';
@@ -26,6 +26,22 @@ const CourseDetailsPage = () => {
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        // userService
+        //     .editUser(course._id, userData)
+        //     .then(({ data }) => {
+        //         authenticateUser()
+        //         navigate('/my-profile')
+        //     })
+        //     .catch(err => console.log(err))
+    }
+
+    const fireFinalActions = () => {
+        loadCourse()
     }
 
     const readStyles = (text) => {
@@ -100,7 +116,7 @@ const CourseDetailsPage = () => {
                         })
                     }
                     <p>{test}</p>
-                    {/* <iframe src="https://codesandbox.io/embed/boring-rosalind-51d51p?fontsize=14&hidenavigation=1&theme=dark"  title="boring-rosalind-51d51p" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe> */}
+
                     <h3>Test what you havee learned here!</h3>
 
                     <iframe
@@ -120,6 +136,13 @@ const CourseDetailsPage = () => {
                         allowfullscreen></iframe>
 
                     <p>{certificate}</p>
+                    <Form onSubmit={handleSubmit}>
+
+                        <div className="d-grid">
+                            <Button onClick={fireFinalActions} variant="dark" type="submit">FINISH</Button>
+                        </div>
+
+                    </Form>
                 </Container>
             </>
     )
