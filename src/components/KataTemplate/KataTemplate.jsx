@@ -8,6 +8,8 @@ import { Link } from "react-router-dom"
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { useNavigate } from 'react-router-dom';
+import Timer from '../Timer/Timer';
+import './KataTemplate.css'
 
 
 const KataTemplate = ({ katas }) => {
@@ -91,8 +93,6 @@ const KataTemplate = ({ katas }) => {
 
     const updateCounter = () => {
 
-        console.log('HE LLEGADO', counter)
-
         if (counter < 2) {
             setCounter(prevCount => prevCount + 1)
             setAnswer(false)
@@ -109,6 +109,7 @@ const KataTemplate = ({ katas }) => {
 
     return (
         <div className='kataPage'>
+            <Timer />
             <p className='kataDescription'>{katas[counter].description}</p>
             <CodeMirror
                 className='codeMirror'

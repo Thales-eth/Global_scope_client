@@ -5,17 +5,21 @@ import { MessageContext } from './../../contexts/userMessage.context'
 import { useNavigate, Link } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import userService from "../../services/user.services"
-import Loader from '../Loader/Loader'
-
+import { useLocation } from 'react-router-dom';
 
 const NavBar = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+
     const { setShowMessage } = useContext(MessageContext)
 
     const [userData, setuserData] = useState(user)
 
+    const [showVar, setShowVar] = useState(false)
+
     const navigate = useNavigate()
+
+    let location = useLocation();
 
     const logout = () => {
         setShowMessage({ show: true, title: 'See you buddy!', text: 'Keep coding :)' })
@@ -38,12 +42,24 @@ const NavBar = () => {
     }, [user])
 
 
+    useEffect(() => {
+
+        setShowVar(window.location.pathname === '/kata-rush')
+    }, [location]);
+
 
     return (
+
         <>
             <Navbar expand="md" variant="dark" className='main-nav mb-5' fixed='top'>
                 <Container>
-                    <Link to={"/"}><Navbar.Brand>&lt; Global Scope /&gt;</Navbar.Brand ></Link>
+
+                    {
+                        !showVar ? <Link to={"/"}><Navbar.Brand>&lt; Global Scope /&gt;</Navbar.Brand ></Link>
+                            :
+                            <Link to={"/"}><Navbar.Brand>&lt; <i> Kata Rush 🔥 </i> /&gt;</Navbar.Brand ></Link>
+                    }
+
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
