@@ -19,7 +19,6 @@ const KatasPage = () => {
         kataService
             .getAllKatas()
             .then(({ data }) => {
-                console.log('ESTA ES LA DIFICULTAD', data)
                 setKatas(data)
                 setIsLoading(false)
             })
@@ -62,7 +61,6 @@ const KatasPage = () => {
                                         <Link to={`/katas/${e._id}`}>
                                             <Card.Body>
                                                 <Card.Title>{e.title}</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted"><i>Subtitle</i></Card.Subtitle>
                                                 <p>Difficulty:{difficultyLvl}</p>
                                                 <Link to={`/katas/${e._id}`}><Button variant="dark">Code</Button></Link>
                                             </Card.Body>

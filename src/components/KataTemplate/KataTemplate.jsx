@@ -1,23 +1,20 @@
 import CodeMirror from '@uiw/react-codemirror';
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { useParams, Link } from "react-router-dom"
+import codeService from '../../services/code.services';
+import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import { MessageContext } from './../../contexts/userMessage.context'
+import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
-import codeService from '../../services/code.services';
-import kataService from '../../services/kata.services';
-import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
-import './KataDetailsPage.css'
+import { useNavigate } from 'react-router-dom';
 
-const KataDetailsPage = () => {
 
-    const { kata_id } = useParams()
+const KataTemplate = ({ katas }) => {
 
-    const [kata, setKata] = useState({})
+    const [code, setCode] = useState(`console.log('hola, bebé')`)
 
-    const { kataCode } = kata
+    const [SuccesText, setSuccessText] = useState(`Next Kata`)
 
     const [isLoading, setIsLoading] = useState("")
 
@@ -33,36 +30,19 @@ const KataDetailsPage = () => {
 
     const [modalShow, setModalShow] = React.useState(false);
 
-    const [code, setCode] = useState(`console.log('hola, bebé')`)
-
     const navigate = useNavigate()
 
     let btnText = ""
 
     isLoading ? btnText = 'Loading...' : btnText = 'Submit your answer!'
 
-    useEffect(() => {
-        loadKata()
-    }, [])
-
-    const loadKata = () => {
-        kataService
-            .getKata(kata_id)
-            .then(({ data }) => {
-                setKata(data)
-            })
-            .catch(err => console.log(err))
-    }
-
-    const onChange = React.useCallback((value, viewUpdate) => {
-        setCode(value)
-    }, []);
+    const [counter, setCounter] = useState(0)
 
     const sendCode = () => {
         setIsLoading(true)
 
         codeService
-            .createFile(code, kataCode)
+            .createFile(code, katas[counter].kataCode)  // Send kata code as props! 
             .then(({ data }) => {
                 const { kataCode } = data
                 verifyCode(kataCode)
@@ -84,6 +64,7 @@ const KataDetailsPage = () => {
                 if (data.results.includes('PASS')) {
                     setAnswer(true)
                     setMessage(true)
+                    setFailure(false)
                     console.log()
                     setShowMessage({ show: true, title: `✔️ 10/10!!`, text: 'Keep pushing 🎉' })
 
@@ -104,12 +85,34 @@ const KataDetailsPage = () => {
             .catch(err => console.log('OPS', err))
     }
 
+    const onChange = React.useCallback((value, viewUpdate) => {
+        setCode(value)
+    }, []);
+
+    const updateCounter = () => {
+
+        console.log('HE LLEGADO', counter)
+
+        if (counter < 2) {
+            setCounter(prevCount => prevCount + 1)
+            setAnswer(false)
+
+            counter === 1 && setSuccessText('You Won :)')
+        }
+
+        else {
+            console.log('¿¿¿???')
+            navigate('/catalog')
+        }
+
+    }
+
     return (
         <div className='kataPage'>
-            <p className='kataDescription'>{kata.description}</p>
+            <p className='kataDescription'>{katas[counter].description}</p>
             <CodeMirror
                 className='codeMirror'
-                value={kata.content}
+                value={katas[counter].content}
                 height='400px'
                 width='600px'
                 theme={okaidia}
@@ -119,7 +122,7 @@ const KataDetailsPage = () => {
             />
 
             {
-                answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+                answer ? <button onClick={updateCounter} className='submitKataSuccess mt-3'>{SuccesText}</button> :
                     <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
                         {btnText}
                     </button>
@@ -132,14 +135,13 @@ const KataDetailsPage = () => {
                 </Button>
             }
 
-            {/* <Button onClick={refresh} variant='dark'>Refresh</Button> */}
 
 
             <MyVerticallyCenteredModal wrongAnswer={wrongAnswer} show={modalShow}
                 onHide={() => setModalShow(false)} />
 
-        </div>
+        </div >
     )
 }
 
-export default KataDetailsPage
+export default KataTemplate

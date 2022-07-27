@@ -18,3 +18,11 @@
     /* align-items: center; */
     flex-wrap: wrap;
 }
+
+.card-body {
+    color: white;
+}
+
+.card-body p {
+    color: #f7630c;
+}
