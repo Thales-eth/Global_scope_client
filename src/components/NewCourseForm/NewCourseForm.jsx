@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import CourseService from '../../services/courses.services'
 import TextEditor from '../TextEditor/TextEditor'
+import uploadServices from "./../../services/upload.services"
 
 
 const NewCourseForm = () => {
@@ -43,10 +44,7 @@ const NewCourseForm = () => {
             .catch(ERR => console.error(ERR))
     }
 
-    const TextContent = content => {
-    }
-
-    const imhere = content => {
+    const theoryContent = content => {
         console.log('ESTOY EN EL PADRE', content)
         setCourseData({ ...courseData, theory: content })
         console.log('DATOS: ', courseData)
@@ -59,7 +57,7 @@ const NewCourseForm = () => {
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="title">
+                        <Form.Group className="mb-3" controlId="coursename">
                             <Form.Label>Coursename</Form.Label>
                             <Form.Control type="text" value={coursename} onChange={handleChange} name="coursename" />
                         </Form.Group>
@@ -71,44 +69,44 @@ const NewCourseForm = () => {
 
                         <Row>
                             <Col>
-                                <Form.Group className="mb-3" controlId="inversions">
+                                <Form.Group className="mb-3" controlId="programmingLanguage">
                                     <Form.Label>Programming Language</Form.Label>
                                     <Form.Control type="text" value={programlanguage} onChange={handleChange} name="programlanguage" />
                                 </Form.Group>
                             </Col>
 
                             <Col>
-                                <Form.Group className="mb-3" controlId="length">
+                                <Form.Group className="mb-3" controlId="subject">
                                     <Form.Label>Subject</Form.Label>
                                     <Form.Control type="text" value={subject} onChange={handleChange} name="subject" />
                                 </Form.Group>
                             </Col>
                         </Row>
 
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="theory">
                             <Form.Label>Theory</Form.Label>
-                            <TextEditor fatherState={imhere} />
+                            <TextEditor fatherState={theoryContent} />
                             {/* <Form.Control type="text" value={theory} onChange={handleChange} name="theory" /> */}
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="test">
                             <Form.Label>Test</Form.Label>
                             <Form.Control type="text" value={test} onChange={handleChange} name="test" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="katas">
                             <Form.Label>Katas</Form.Label>
-                            <Form.Control type="text" value={katas} onChange={handleChange} name="katas" />
+                            <Form.Control type="text" placeholder='Paste your sandbox url without styles' value={katas} onChange={handleChange} name="katas" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="video">
                             <Form.Label>Video</Form.Label>
                             <Form.Control type="text" value={video} onChange={handleChange} name="video" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="resources">
                             <Form.Label>Resources</Form.Label>
-                            <Form.Control type="text" value={resources} onChange={handleChange} name="resources" />
+                            <Form.Control type="text" placeholder='Paste the video url' value={resources} onChange={handleChange} name="resources" />
                         </Form.Group>
 
                         {/* <Form.Group className="mb-3" controlId="imageUrl">
@@ -116,7 +114,7 @@ const NewCourseForm = () => {
                 <Form.Control type="text" value={theory} onChange={handleChange} name="theory" />
             </Form.Group> */}
                         {/* CHANGE CHECKBOX */}
-                        <Form.Group className="mb-3" controlId="imageUrl">
+                        <Form.Group className="mb-3" controlId="certificate">
                             <Form.Label>certificate</Form.Label>
                             <Form.Control type="text" value={certificate} onChange={handleChange} name="certificate" />
                         </Form.Group>

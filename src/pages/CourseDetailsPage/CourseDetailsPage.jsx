@@ -33,7 +33,7 @@ const CourseDetailsPage = () => {
         console.log(text)
         if (text.inlineStyleRanges.length === 0) {
             text.type === 'header-one' ? style = `<h1>${text.text}</h1>` : style += ''
-            text.type === 'header-two' ? style += `<h2>${text.text}</h2>` : style += ''
+            text.type === 'header-two' ? style = `<h2>${text.text}</h2>` : style += ''
             text.type === 'header-three' ? style = `<h3>${text.text}</h3>` : style += ''
         }
         else {
@@ -53,6 +53,10 @@ const CourseDetailsPage = () => {
                     style = style.replace(text.text.slice(elem.offset, endSlice),
                         `<u>${text.text.slice(elem.offset, endSlice)}</u>`)
                 }
+                if (elem.style === 'CODE') {
+                    style = style.replace(text.text.slice(elem.offset, endSlice),
+                        `<tt>${text.text.slice(elem.offset, endSlice)}</tt>`)
+                }
             })
         }
 
@@ -71,16 +75,20 @@ const CourseDetailsPage = () => {
                     <h1>Course Details:</h1>
                     <Row className="topPage">
                         <Col md={{ span: 2, offset: 0 }}>
+                            <h5>Name:</h5>
                             <p><b>{coursename}</b></p>
                         </Col>
                         <Col md={{ span: 1, offset: 0 }}>
+                            <h5>P.Language:</h5>
                             <p>{programlanguage}</p>
 
                         </Col>
                         <Col md={{ span: 6, offset: 0 }}>
+                            <h5>Description:</h5>
                             <p>{description}</p>
                         </Col>
                         <Col md={{ span: 3, offset: 0 }}>
+                            <h5>Subject:</h5>
                             <p>{subject}</p>
 
                         </Col>
@@ -93,18 +101,24 @@ const CourseDetailsPage = () => {
                     }
                     <p>{test}</p>
                     {/* <iframe src="https://codesandbox.io/embed/boring-rosalind-51d51p?fontsize=14&hidenavigation=1&theme=dark"  title="boring-rosalind-51d51p" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe> */}
+                    <h3>Test what you havee learned here!</h3>
+
                     <iframe
                         src={katas}
                         className="sand" title="boring-rosalind-51d51p"
-                        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid;
+                         microphone; midi; payment; usb; vr; xr-spatial-tracking"
                         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
-                    <p>{video}</p>
 
-                    <video autoPlay muted loop className="courseVideo">
-                        <source src={`${video}`} />
-                    </video>
+                    <p>Try this resources if you want more information: <br />
+                        {resources}</p>
 
-                    <p>{resources}</p>
+                    <h3>Keep learning!</h3>
+
+                    <iframe width="560" height="315" className="courseVideo" src={`${video}`} title="YouTube video player"
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
                     <p>{certificate}</p>
                 </Container>
             </>
