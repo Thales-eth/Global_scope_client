@@ -15,13 +15,40 @@ const Catalog = () => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    const { user } = useContext(AuthContext)
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    const { user, authenticateUser } = useContext(AuthContext)
+
+    const [loggedUser, setloggedUser] = useState(user)
+
 
     const navigate = useNavigate()
 
     useEffect(() => {
         loadCourses()
-    }, [])
+        user !== null ?
+            userService
+                .getUser(user._id)
+                .then(({ data }) => {
+                    console.log('------usuario-----', data)
+                    data.role === 'ADMIN' ? setIsAdmin(true) : setIsAdmin(false)
+                })
+                .catch(err => console.error(err))
+
+            : console.log('USERDATA', user)
+    }, [user])
+
+    // const loadUser = () => {
+    //     userService
+    //         .getUser(loggedUser._id)
+    //         .then(({ data }) => {
+    //             console.log('DATOSSSS', loggedUser)
+    //             setloggedUser(data)
+    //             loggedUser.role === 'ADMIN' ? setIsAdmin(true) : setIsAdmin(false)
+    //         })
+    //         .catch(err => console.log(err))
+
+    // }
 
     const loadCourses = () => {
         CourseService
@@ -29,6 +56,7 @@ const Catalog = () => {
             .then(({ data }) => {
                 setCourses(data)
                 setIsLoading(false)
+                user.role === 'ADMIN' ? setIsAdmin(true) : setIsAdmin(false)
             })
             .catch(err => console.log(err))
     }
@@ -48,7 +76,9 @@ const Catalog = () => {
             <>
                 <div className="CatalogPage">
                     <h1 className="title mb-5">All our courses:</h1>
-                    <Link to={`/new-course`}><p>Create a new course</p></Link>
+
+                    {isAdmin ? <Link to={`/new-course`}><p>Create a new course</p></Link> : <></>}
+
                     <div className="courseCluster">
                         {
                             courses.map(e => {
