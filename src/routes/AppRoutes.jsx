@@ -6,13 +6,11 @@ import NewCoursePage from '../pages/NewCoursePage/NewCoursePage'
 import MyProfilePage from '../pages/MyProfilePgae/MyProfilePage'
 import KatasPage from '../pages/KatasPage/KatasPage'
 import KataRushPage from '../pages/KataRushPage/KataRushPage'
-import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import ContactPage from '../pages/ContactPage/ContactPage'
 import RegisterPage from '../pages/RegisterPage/RegisterPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
 import KataDetailsPage from '../pages/KataDetailsPage/KataDetailsPage'
 import MyProfileEditPage from '../pages/MyProfileEditPage/MyProfileEditPage'
-import NavBar from '../components/NavBar/Navigation'
 import PrivateRoute from './PrivateRoutes'
 
 const AppRoutes = () => {
@@ -51,7 +49,6 @@ const AppRoutes = () => {
                 <Route path='' element={<MyProfileEditPage />} />
             </Route>
 
-            <Route path='/about-us' element={<AboutUsPage />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { MessageContext } from './../../contexts/userMessage.context'
 import { AuthContext } from "../../contexts/auth.context"
 import authService from './../../services/auth.services'
@@ -11,8 +11,6 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
-
-    const { user, isLoading } = useContext(AuthContext)
 
     const { setShowMessage } = useContext(MessageContext)
 

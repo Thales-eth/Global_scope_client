@@ -7,7 +7,6 @@
 | "/my-profile                |  User information     | ----
 | "/katas                     |  Full list of katas   | ----
 | "/kata-rush"                |  Speed Kata Game      | ----
-| "/about-us"                 |  About us page        | ^^^^
 | "/contact"                  |  Contact page         | **
 | "/register"                 |  Sign up page         | **
 | "/login"                    |  Login page           | **

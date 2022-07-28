@@ -1,10 +1,9 @@
 import CodeMirror from '@uiw/react-codemirror';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import codeService from '../../services/code.services';
 import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import { MessageContext } from './../../contexts/userMessage.context'
 import { Button } from 'react-bootstrap';
-import { Link } from "react-router-dom"
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { useNavigate } from 'react-router-dom';
