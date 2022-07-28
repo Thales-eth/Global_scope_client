@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/auth.context"
 import './CatalogPage.css'
 import RandomKata from "../../components/RandomKata/RandomKata"
 import RandomCourse from "../../components/RandomCourse/RandomCourse"
+import dots from './../../assets/dots.png'
 
 const Catalog = () => {
 
@@ -38,18 +39,6 @@ const Catalog = () => {
             : console.log('USERDATA', user)
     }, [user])
 
-    // const loadUser = () => {
-    //     userService
-    //         .getUser(loggedUser._id)
-    //         .then(({ data }) => {
-    //             console.log('DATOSSSS', loggedUser)
-    //             setloggedUser(data)
-    //             loggedUser.role === 'ADMIN' ? setIsAdmin(true) : setIsAdmin(false)
-    //         })
-    //         .catch(err => console.log(err))
-
-    // }
-
     const loadCourses = () => {
         CourseService
             .getCourses()
@@ -75,8 +64,8 @@ const Catalog = () => {
             :
             <>
                 <div className="CatalogPage">
-                    <h1 className="title mb-5">All our courses:</h1>
-
+                    <h1 className="title mb-5">Our courses:</h1>
+                    {/* <hr /> */}
                     {isAdmin ? <Link to={`/new-course`}><p>Create a new course</p></Link> : <></>}
 
                     <div className="courseCluster">
@@ -90,6 +79,7 @@ const Catalog = () => {
                                                 <Card.Subtitle className="mb-2 text-muted"><i>{e.programlanguage}</i></Card.Subtitle>
                                                 <p>{e.coursename}</p>
                                                 <Button onClick={() => enrollUser(e._id)} variant="dark">Enroll</Button>
+                                                <img className="dots" src={dots} alt="dots" />
                                             </Card.Body>
                                             </Link>
                                         </Card>

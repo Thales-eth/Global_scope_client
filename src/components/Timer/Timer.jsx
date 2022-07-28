@@ -1,17 +1,24 @@
 import { useState, useEffect } from "react"
 import './Timer.css'
 import useSound from 'use-sound';
-import timerSound from './../../assets/timerSound.mp3'
+import timer from './../../assets/timer.mp3'
+import defeat from './../../assets/defeat.mp3'
+import soundLogo from './../../assets/sound.png'
+import mutedLogo from './../../assets/muted.png'
 
 function Timer() {
 
-    const [count, setCount] = useState(63)
+    const [count, setCount] = useState(300)
 
-    const audio = new Audio(timerSound);
+    const [musicSound, setMusicSound] = useState(true)
 
-    audio.loop = true;
+    const audio = new Audio(timer);
 
+    const audioDefeat = new Audio(defeat);
 
+    audioDefeat.muted = !musicSound
+
+    audio.muted = !musicSound
 
     useEffect(() => {
 
@@ -26,8 +33,6 @@ function Timer() {
 
         return () => {
             clearInterval(id)
-
-            document.title = 'Kata Rush'
         }
 
     }, [count])
@@ -35,8 +40,6 @@ function Timer() {
     useEffect(() => {
         document.title = humanHour
     }, [count])
-
-
 
     let mins = (parseInt(count / 60))
     let realMins = mins % 60
@@ -53,16 +56,35 @@ function Timer() {
         divStyle = 'orangeBackground'
     }
 
-    if (count === 59) {
+    if (count === 24) {
         audio.play()
+    }
+
+    if (count === 0) {
+        audio.pause()
+        audioDefeat.play()
+    }
+
+    const pauseSounds = () => {
+        setMusicSound(false)
+        audio.pause()
+    }
+
+    const activateSound = () => {
+        setMusicSound(true)
     }
 
 
     return (
         <div className={`Timer ${divStyle}`}>
-            <h2>Timer</h2>
+            {
 
-            <h3>{humanHour}</h3>
+                musicSound ? <img onClick={pauseSounds} className="soundLogo" src={soundLogo} alt="sound" />
+                    :
+                    <img onClick={activateSound} className="soundLogo" src={mutedLogo} alt="sound" />
+
+            }
+            <h2 className="watchTime">{humanHour}</h2>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import userService from "../../services/user.services"
+import dots from './../../assets/dots.png'
 
 const RandomCourse = () => {
 
@@ -43,6 +44,7 @@ const RandomCourse = () => {
                 <Card.Title>{coursename}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted"><i>{programlanguage}</i></Card.Subtitle>
                 <Button onClick={() => enrollUser(_id)} variant="dark">Enroll</Button>
+                <img className="dots" src={dots} alt="dots" />
             </Card.Body>
             </Link>
         </Card>

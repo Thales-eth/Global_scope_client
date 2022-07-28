@@ -1,9 +1,6 @@
 .CatalogPage {
     height: 250vh;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736378/courses_wpyanu.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('./../../assets/global.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -27,7 +24,7 @@
     text-align: left;
     color: white;
     border: 1px solid white;
-    border-radius: 0;
+    border-radius: 5px;
     margin: 20px;
     padding: 5px;
     transition: 0.5s;
@@ -55,4 +52,10 @@
     background-color: black;
     border-color: white;
     color: white;
+}
+
+.dots {
+    width: 40px;
+    margin-left: 120px;
+    border-radius: 50%;
 }

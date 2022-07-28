@@ -31,7 +31,7 @@ const KatasPage = () => {
         isLoading ? <Loader />
             :
             <div className="katasPage">
-                <h1 className="title mt-5">Choose your kata!:</h1>
+                <h1 className="title mb-5 mt-3">Choose your kata!:</h1>
                 <div className="kataCluster">
                     {
                         katas.map(e => {

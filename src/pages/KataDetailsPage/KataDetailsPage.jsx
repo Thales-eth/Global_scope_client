@@ -76,7 +76,7 @@ const KataDetailsPage = () => {
             .verifyCode(kataCode)
             .then(({ data }) => {
 
-                console.log('MIRA LO QUE LLEGA->', data)
+                console.log('MIRA LO QUE LLEGA->', data.results)
 
                 setIsLoading(false)
 

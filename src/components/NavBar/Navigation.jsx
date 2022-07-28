@@ -22,7 +22,7 @@ const NavBar = () => {
     let location = useLocation();
 
     const logout = () => {
-        setShowMessage({ show: true, title: 'See you buddy!', text: 'Keep coding :)' })
+        setShowMessage({ show: true, title: '👋 See you buddy!', text: 'Keep coding :)' })
         logoutUser()
         navigate('/')
 
@@ -92,7 +92,7 @@ const NavBar = () => {
                                     </>
                                     :
                                     <>
-                                        <Nav.Link className='logout' as="a" onClick={logout}>Cerrar sesión</Nav.Link>
+                                        <Nav.Link className='logout' as="a" onClick={logout}>Log out</Nav.Link>
 
                                         <Link to="/my-profile">
                                             <img className='navLogo' src={user.avatar} alt="" />

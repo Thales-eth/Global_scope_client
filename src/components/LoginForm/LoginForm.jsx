@@ -33,10 +33,11 @@ const LoginForm = () => {
         authService
             .login(loginData)
             .then(({ data }) => {
+                let fullUserName = loginData.email.split('@')[0]
                 storeToken(data.authToken)
                 authenticateUser()
                 navigate('/catalog')
-                setShowMessage({ show: true, title: `Hey ${loginData.email} 👋!`, text: 'Are you into katas son?' })
+                setShowMessage({ show: true, title: `Hey ${fullUserName} 👋!`, text: 'Are you into katas son?' })
             })
             .catch(err => console.log(err))
 

@@ -30,13 +30,6 @@ const CourseDetailsPage = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-
-        // userService
-        //     .editUser(course._id, userData)
-        //     .then(({ data }) => {
-        //         navigate('/my-profile')
-        //     })
-        //     .catch(err => console.log(err))
     }
 
     const fireFinalActions = () => {
