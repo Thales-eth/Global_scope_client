@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('file:///C:/Users/spani/Downloads/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1659035040/jeremy-perkins-uhjiu8FjnsQ-unsplash_ahzljq.jpg');
 }
 
 .registerPage h1 {

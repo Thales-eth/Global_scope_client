@@ -1,13 +1,12 @@
 import './HomePage.css'
 import { Link } from 'react-router-dom'
-import homeVideo from './../../assets/home_intro.mp4'
 
 const HomePage = () => {
     return (
         <>
             <div className="video-wrapper">
                 <video className='introVideo' autoPlay muted loop>
-                    <source src={homeVideo} type="video/mp4" />
+                    <source src='https://res.cloudinary.com/dqwiiycdv/video/upload/v1659035151/globalscope_home_t3lh6c.mp4' type="video/mp4" />
                 </video>
 
                 <Link to={'/catalog'}><span className='homeSpan'>View all Courses</span></Link>

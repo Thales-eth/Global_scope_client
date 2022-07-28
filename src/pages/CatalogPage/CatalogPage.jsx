@@ -108,16 +108,6 @@ const Catalog = () => {
                     </div>
                 </div>
                 <hr />
-                <Container>
-                    <Row>
-                        <Col md={{ span: 6 }}>
-                            <h3 className="mt-5">Try something new!:</h3>
-                            <RandomKata />
-                            <h3>Here's a course you might enjoy!:</h3>
-                            <RandomCourse />
-                        </Col>
-                    </Row>
-                </Container>
             </div>
 
     )
