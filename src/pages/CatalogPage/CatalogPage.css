@@ -1,6 +1,6 @@
 .CatalogPage {
     height: 250vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('./../../assets/global.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999802/global_q4yhvm.jpg');
     background-size: cover;
     background-position: center;
 }

@@ -63,6 +63,7 @@ const KatasPage = () => {
                                                 <Card.Title>{e.title}</Card.Title>
                                                 <p>Difficulty:{difficultyLvl}</p>
                                                 <Link to={`/katas/${e._id}`}><Button variant="dark">Code</Button></Link>
+                                                <img className="dots" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/dots_i7t9iu.png" alt="dots" />
                                             </Card.Body>
                                         </Link>
                                     </Card>

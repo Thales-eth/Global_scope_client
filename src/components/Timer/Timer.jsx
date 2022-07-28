@@ -8,13 +8,13 @@ import mutedLogo from './../../assets/muted.png'
 
 function Timer() {
 
-    const [count, setCount] = useState(300)
+    const [count, setCount] = useState(26)
 
     const [musicSound, setMusicSound] = useState(true)
 
-    const audio = new Audio(timer);
+    const audio = new Audio('https://res.cloudinary.com/dqwiiycdv/video/upload/v1658999802/timer_pw1mdi.mp3');
 
-    const audioDefeat = new Audio(defeat);
+    const audioDefeat = new Audio('https://res.cloudinary.com/dqwiiycdv/video/upload/v1658999803/defeat_czqrmx.mp3');
 
     audioDefeat.muted = !musicSound
 
@@ -79,9 +79,9 @@ function Timer() {
         <div className={`Timer ${divStyle}`}>
             {
 
-                musicSound ? <img onClick={pauseSounds} className="soundLogo" src={soundLogo} alt="sound" />
+                musicSound ? <img onClick={pauseSounds} className="soundLogo" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/sound_bozcub.png" alt="sound" />
                     :
-                    <img onClick={activateSound} className="soundLogo" src={mutedLogo} alt="sound" />
+                    <img onClick={activateSound} className="soundLogo" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/muted_qefrtw.png" alt="sound" />
 
             }
             <h2 className="watchTime">{humanHour}</h2>

@@ -8,7 +8,6 @@ import { AuthContext } from "../../contexts/auth.context"
 import './CatalogPage.css'
 import RandomKata from "../../components/RandomKata/RandomKata"
 import RandomCourse from "../../components/RandomCourse/RandomCourse"
-import dots from './../../assets/dots.png'
 
 const Catalog = () => {
 
@@ -79,7 +78,7 @@ const Catalog = () => {
                                                 <Card.Subtitle className="mb-2 text-muted"><i>{e.programlanguage}</i></Card.Subtitle>
                                                 <p>{e.coursename}</p>
                                                 <Button onClick={() => enrollUser(e._id)} variant="dark">Enroll</Button>
-                                                <img className="dots" src={dots} alt="dots" />
+                                                <img className="dots" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/dots_i7t9iu.png" alt="dots" />
                                             </Card.Body>
                                             </Link>
                                         </Card>

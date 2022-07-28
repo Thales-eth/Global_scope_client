@@ -1,6 +1,6 @@
 .katasPage {
     height: 250vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url('./../../assets/cosmos.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999803/cosmos_uaz9sd.jpg');
     background-size: cover;
     background-position: center;
 }
