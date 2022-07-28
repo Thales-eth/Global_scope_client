@@ -1,5 +1,6 @@
 .kataDescription {
     border: 1px solid white;
+    border-radius: 2px;
     padding: 10px;
     width: 600px;
     background-color: black;
@@ -12,7 +13,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736377/background_viqild.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('file:///C:/Users/spani/Downloads/shot-by-cerqueira-0o_GEzyargo-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
     color: white;
 }
 
@@ -53,10 +56,10 @@
 }
 
 .submitKataSuccess {
-    background-color: #f7630c;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 20px;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 2px;
 
     text-transform: uppercase;
@@ -68,4 +71,45 @@
 .submitKataSuccess:hover {
     background-color: black;
     border-color: white;
+    color: white;
+}
+
+.mistakesBtn {
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+    margin-right: 95%;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border: 1px solid black;
+    transition: 0.5s;
+}
+
+
+.mistakesBtn:hover {
+    border: 1px solid black;
+    background-color: yellow;
+}
+
+.modal-content {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.modal-content .btn {
+    padding: 10px;
+    letter-spacing: 2px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.modal-content .btn:hover {
+    color: black;
+    background-color: white;
 }

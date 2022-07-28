@@ -6,15 +6,7 @@ const RegisterPage = () => {
 
     return (
         <div className='registerPage'>
-            <Container>
-                <Row>
-                    <Col>
-                        <h1>Code for free!</h1>
-                        <hr />
-                        <RegisterForm />
-                    </Col>
-                </Row>
-            </Container>
+            <RegisterForm />
         </div>
     )
 }

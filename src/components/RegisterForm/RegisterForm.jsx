@@ -58,6 +58,8 @@ const RegisterForm = () => {
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
+                    <h1>Code for free!</h1>
+                    <hr />
                     <Form onSubmit={handleSubmit}>
 
                         <Form.Group className="mb-3" controlId="username">
