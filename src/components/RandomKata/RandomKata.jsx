@@ -50,7 +50,7 @@ const RandomKata = () => {
                         <Card.Title>{title}</Card.Title>
                         <p>{difficultyLvl}</p>
                         <Link to={`/katas/${kataID}`}><Button variant="dark">Code</Button></Link>
-                        <img className="dots" src={dots} alt="dots" />
+                        <img className="dots" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/dots_i7t9iu.png" alt="dots" />
                     </Card.Body>
                 </Link>
             </Card>
