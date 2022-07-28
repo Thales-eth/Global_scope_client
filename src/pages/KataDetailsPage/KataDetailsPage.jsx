@@ -72,6 +72,8 @@ const KataDetailsPage = () => {
 
     const verifyCode = (kataCode) => {
 
+        console.log('LLEGA EL CODE, NO?-->', kataCode)
+
         codeService
             .verifyCode(kataCode)
             .then(({ data }) => {
