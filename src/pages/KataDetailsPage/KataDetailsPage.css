@@ -14,6 +14,7 @@
     flex-direction: column;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736377/background_viqild.jpg');
     color: white;
+    overflow: hidden;
 }
 
 .kataTitle {

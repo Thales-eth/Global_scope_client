@@ -102,13 +102,19 @@ const CourseDetailsPage = () => {
                         </Col>
                     </Row>
                     <hr />
-                    {
-                        theory.map(e => {
-                            return readStyles(e)
-                        })
-                    }
-                    <p>{test}</p>
+                    <Row>
+                        <Col md={{ span: 10, offset: 2 }}>
+                            <section className="courseContent" >
+                                {
+                                    theory.map(e => {
+                                        return readStyles(e)
+                                    })
+                                }
+                                <p>{test}</p>
 
+                            </section>
+                        </Col>
+                    </Row>
                     <h3>Test what you havee learned here!</h3>
 
                     <iframe
@@ -135,6 +141,7 @@ const CourseDetailsPage = () => {
                         </div>
 
                     </Form>
+
                 </Container>
             </>
     )

@@ -93,10 +93,15 @@ const NavBar = () => {
                                     :
                                     <>
                                         <Nav.Link className='logout' as="a" onClick={logout}>Log out</Nav.Link>
+                                        {
+                                            userData ?
+                                                <Link to="/my-profile">
+                                                    <img className='navLogo' src={userData.avatar} alt="" />
+                                                </Link>
+                                                :
+                                                <></>
+                                        }
 
-                                        <Link to="/my-profile">
-                                            <img className='navLogo' src={user.avatar} alt="" />
-                                        </Link>
                                     </>
                             }
                         </Nav>

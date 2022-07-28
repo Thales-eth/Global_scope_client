@@ -4,7 +4,7 @@
 
 .details {
     padding-top: 100px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 .sand {
@@ -18,4 +18,8 @@
 .courseVideo {
     width: 100%;
     height: 500px;
+}
+
+.courseContent {
+    width: 80%;
 }

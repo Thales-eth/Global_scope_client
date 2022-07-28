@@ -1,7 +1,7 @@
 import CodeMirror from '@uiw/react-codemirror';
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from "react-router-dom"
 import { MessageContext } from './../../contexts/userMessage.context'
 import { javascript } from '@codemirror/lang-javascript';
@@ -106,31 +106,39 @@ const KataDetailsPage = () => {
 
     return (
         <div className='kataPage'>
-            <p className='kataDescription'>{kata.description}</p>
-            <CodeMirror
-                className='codeMirror'
-                value={kata.content}
-                height='400px'
-                width='600px'
-                theme={okaidia}
-                extensions={[javascript({ jsx: true })]}
-                onChange={onChange}
+            <Row>
+                <Col md={{ span: 4, offset: 1 }}>
+                    <p>{kata.instructions}</p>
+                </Col>
+                <Col md={{ span: 4, offset: 1 }}>
+                    <p className='kataDescription'>{kata.description}</p>
+                    <CodeMirror
+                        className='codeMirror'
+                        value={kata.content}
+                        height='400px'
+                        width='600px'
+                        theme={okaidia}
+                        extensions={[javascript({ jsx: true })]}
+                        onChange={onChange}
 
-            />
+                    />
 
-            {
-                answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
-                    <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
-                        {btnText}
-                    </button>
 
-            }
+                    {
+                        answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+                            <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
+                                {btnText}
+                            </button>
 
-            {
-                failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
-                    Mistakes were made...
-                </Button>
-            }
+                    }
+
+                    {
+                        failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
+                            Mistakes were made...
+                        </Button>
+                    }
+                </Col>
+            </Row>
 
             {/* <Button onClick={refresh} variant='dark'>Refresh</Button> */}
 

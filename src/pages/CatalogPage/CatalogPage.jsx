@@ -74,9 +74,28 @@ const Catalog = () => {
                                     <>
                                         <Card key={e._id} style={{ width: '18rem' }}>
                                             <Link to={`/catalog/${e._id}`}> <Card.Body>
-                                                <Card.Title>Course Title</Card.Title>
+                                                <Card.Title className="courseTitle">{e.coursename}</Card.Title>
+
+                                                {
+                                                    e.programlanguage === 'JavaScript' ?
+                                                        <img className="miniLogo mt-3" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736331/js_mcgdil.png" alt="logo" />
+                                                        : <></>
+                                                }
+                                                {
+                                                    e.programlanguage === 'Python' ?
+                                                        <img className="miniLogo mt-3" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736342/python_zyk0je.png" alt="logo" />
+                                                        : <></>
+                                                }
+                                                {
+                                                    e.programlanguage === 'React' ?
+                                                        <img className="miniLogo mt-3" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1659022207/800px-React_emwdeu.png" alt="logo" />
+                                                        : <></>
+                                                }
+
+
+
                                                 <Card.Subtitle className="mb-2 text-muted"><i>{e.programlanguage}</i></Card.Subtitle>
-                                                <p>{e.coursename}</p>
+                                                <p>{e.subject}</p>
                                                 <Button onClick={() => enrollUser(e._id)} variant="dark">Enroll</Button>
                                                 <img className="dots" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658999801/dots_i7t9iu.png" alt="dots" />
                                             </Card.Body>

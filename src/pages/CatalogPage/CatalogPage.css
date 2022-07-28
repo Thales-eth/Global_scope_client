@@ -59,3 +59,14 @@
     margin-left: 120px;
     border-radius: 50%;
 }
+
+.miniLogo {
+    width: 40px;
+    margin-left: 200px;
+    position: absolute;
+    top: 0;
+}
+
+.courseTitle {
+    max-width: 210px
+}

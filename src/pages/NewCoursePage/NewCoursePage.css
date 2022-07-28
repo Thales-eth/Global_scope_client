@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 100px;
+    /* padding-top: 50px; */
+    height: 185vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736377/background_viqild.jpg');
 }

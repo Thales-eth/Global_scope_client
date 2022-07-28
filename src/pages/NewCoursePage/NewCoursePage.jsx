@@ -5,7 +5,7 @@ const NewCoursePage = () => {
 
     return (
         <div className="NewCoursePage">
-            <h1>NEW COURSE PAGE BELLA</h1>
+            <h1>CREATE A NEW COURSE</h1>
             <NewCourseForm />
         </div>
     )
