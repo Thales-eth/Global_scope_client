@@ -53,6 +53,10 @@ const KatasPage = () => {
                                 case '4':
                                     difficultyLvl = '🔥🔥🔥🔥'
                                     break;
+
+                                case '5':
+                                    difficultyLvl = '🔥🔥🔥🔥🔥'
+                                    break;
                             }
 
                             return (

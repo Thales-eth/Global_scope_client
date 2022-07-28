@@ -19,9 +19,9 @@ const ContactPage = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" />
                             </Form.Group>
-                            <Button type="submit">
-                                Submit
-                            </Button>
+                            <div className="d-grid">
+                                <Button variant="dark" type="submit">Contact us</Button>
+                            </div>
                         </Form>
                     </Col>
                 </Row>

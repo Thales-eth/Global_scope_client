@@ -48,6 +48,8 @@ const LoginForm = () => {
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
+                    <h1>Log in</h1>
+                    <hr />
                     <Form onSubmit={handleSubmit}>
 
                         <Form.Group className="mb-3" controlId="email">

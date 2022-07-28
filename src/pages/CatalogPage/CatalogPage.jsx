@@ -61,7 +61,7 @@ const Catalog = () => {
 
         isLoading ? <Loader />
             :
-            <>
+            <div>
                 <div className="CatalogPage">
                     <h1 className="title mb-5">Our courses:</h1>
                     {/* <hr /> */}
@@ -106,20 +106,20 @@ const Catalog = () => {
                             })
                         }
                     </div>
-                    <hr />
-                    <Container>
-                        <Row>
-                            <Col md={{ span: 6 }}>
-                                <h3 className="mt-5">Try something new!:</h3>
-                                <RandomKata />
-                                <h3>Here's a course you might enjoy!:</h3>
-                                <RandomCourse />
-                            </Col>
-                        </Row>
-                    </Container>
                 </div>
+                <hr />
+                <Container>
+                    <Row>
+                        <Col md={{ span: 6 }}>
+                            <h3 className="mt-5">Try something new!:</h3>
+                            <RandomKata />
+                            <h3>Here's a course you might enjoy!:</h3>
+                            <RandomCourse />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
 
-            </>
     )
 }
 

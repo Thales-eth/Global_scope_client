@@ -72,6 +72,8 @@ const KataDetailsPage = () => {
 
     const verifyCode = (kataCode) => {
 
+        console.log('LLEGA EL CODE, NO?-->', kataCode)
+
         codeService
             .verifyCode(kataCode)
             .then(({ data }) => {
@@ -91,9 +93,28 @@ const KataDetailsPage = () => {
                 if (data.results.includes('FAIL')) {
                     // Test failure results
                     setFailure(true)
-                    setWrongAnswer(data.results)
                     setMessage(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: `❌Wrong answer tho... :)` })
+
+                    let aux = data.results.split('Expected: ')
+                    let aux2 = data.results.split('Received: ')
+
+                    aux.shift()
+                    aux2.shift()
+
+                    aux = aux.map(e => e.split(" ")[0])
+                    aux2 = aux2.map(e => e.split(" ")[0])
+
+                    let expectArr = []
+
+                    aux.forEach((e, i) => {
+                        expectArr.push(`Expected ${e}, received ${aux2[i]}`)
+                    })
+
+                    let finalResult = expectArr.join(" ")
+
+                    setWrongAnswer(finalResult)
+
                 }
 
                 if (!data.results) {
@@ -105,48 +126,78 @@ const KataDetailsPage = () => {
     }
 
     return (
-        <div className='kataPage'>
-            <Row>
-                <Col md={{ span: 4, offset: 1 }}>
-                    <p>{kata.instructions}</p>
-                </Col>
-                <Col md={{ span: 4, offset: 1 }}>
-                    <p className='kataDescription'>{kata.description}</p>
-                    <CodeMirror
-                        className='codeMirror'
-                        value={kata.content}
-                        height='400px'
-                        width='600px'
-                        theme={okaidia}
-                        extensions={[javascript({ jsx: true })]}
-                        onChange={onChange}
+        // <div className='kataPage'>
+        //     <Row>
+        //         <Col md={{ span: 4, offset: 1 }}>
+        //             <p>{kata.instructions}</p>
+        //         </Col>
+        //         <Col md={{ span: 4, offset: 1 }}>
+        //             <p className='kataDescription'>{kata.description}</p>
+        //             <CodeMirror
+        //                 className='codeMirror'
+        //                 value={kata.content}
+        //                 height='400px'
+        //                 width='600px'
+        //                 theme={okaidia}
+        //                 extensions={[javascript({ jsx: true })]}
+        //                 onChange={onChange}
 
-                    />
-
-
-                    {
-                        answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
-                            <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
-                                {btnText}
-                            </button>
-
-                    }
-
-                    {
-                        failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
-                            Mistakes were made...
-                        </Button>
-                    }
-                </Col>
-            </Row>
-
-            {/* <Button onClick={refresh} variant='dark'>Refresh</Button> */}
+        //             />
 
 
-            <MyVerticallyCenteredModal wrongAnswer={wrongAnswer} show={modalShow}
-                onHide={() => setModalShow(false)} />
+        //             {
+        //                 answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+        //                     <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
+        //                         {btnText}
+        //                     </button>
 
-        </div>
+        //             }
+
+        //             {
+        //                 failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
+        //                     Mistakes were made...
+        //                 </Button>
+        //             }
+        //         </Col>
+        //     </Row>
+
+        //     {/* <Button onClick={refresh} variant='dark'>Refresh</Button> */}
+        <>
+
+            <div className='kataPage'>
+                <p className='kataDescription'>{kata.description}</p>
+                <CodeMirror
+                    className='codeMirror'
+                    value={kata.content}
+                    height='400px'
+                    width='600px'
+                    theme={okaidia}
+                    extensions={[javascript({ jsx: true })]}
+                    onChange={onChange}
+
+                />
+
+                {
+                    answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+                        <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
+                            {btnText}
+                        </button>
+
+                }
+
+
+
+                <MyVerticallyCenteredModal className='mistakesModal' wrongAnswer={wrongAnswer} show={modalShow}
+                    onHide={() => setModalShow(false)} />
+
+                {
+                    failure && <button className='mistakesBtn mt-3' onClick={() => setModalShow(true)}>
+                    </button>
+                }
+            </div>
+
+
+        </>
     )
 }
 
