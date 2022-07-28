@@ -3,7 +3,6 @@ import kataService from "../../services/kata.services"
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useState } from "react"
-import dots from './../../assets/dots.png'
 
 const RandomKata = () => {
 

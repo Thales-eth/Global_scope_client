@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react"
 import './Timer.css'
-import useSound from 'use-sound';
-import timer from './../../assets/timer.mp3'
-import defeat from './../../assets/defeat.mp3'
-import soundLogo from './../../assets/sound.png'
-import mutedLogo from './../../assets/muted.png'
 
 function Timer() {
 
