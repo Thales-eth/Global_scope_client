@@ -77,73 +77,71 @@ const CourseDetailsPage = () => {
 
         isLoading ? <Loader />
             :
-            <>
-                <Container className="details">
+            <div className="details">
+                <header className="courseHeader">
+                    <Container>
+                        <h1>{coursename}</h1>
+                        <Row className="topPage">
 
-                    <h1>Course Details:</h1>
-                    <Row className="topPage">
-                        <Col md={{ span: 2, offset: 0 }}>
-                            <h5>Name:</h5>
-                            <p><b>{coursename}</b></p>
-                        </Col>
-                        <Col md={{ span: 1, offset: 0 }}>
-                            <h5>P.Language:</h5>
-                            <p>{programlanguage}</p>
+                            <Col md={{ span: 6, offset: 3 }}>
+                                <h5><b>Description:</b></h5>
+                                <p>{description}</p>
+                                <hr />
+                            </Col>
+                        </Row>
 
-                        </Col>
-                        <Col md={{ span: 6, offset: 0 }}>
-                            <h5>Description:</h5>
-                            <p>{description}</p>
-                        </Col>
-                        <Col md={{ span: 3, offset: 0 }}>
-                            <h5>Subject:</h5>
-                            <p>{subject}</p>
+                        <Row>
+                            <Col md={{ span: 6, offset: 3 }}>
+                                <h5><b>Subject:</b></h5>
+                                <p>{subject}</p>
+                                <hr />
+                            </Col>
+                        </Row>
 
-                        </Col>
-                    </Row>
-                    <hr />
-                    <Row>
-                        <Col md={{ span: 10, offset: 2 }}>
-                            <section className="courseContent" >
-                                {
-                                    theory.map(e => {
-                                        return readStyles(e)
-                                    })
-                                }
-                                <p>{test}</p>
+                    </Container>
+                </header>
 
-                            </section>
-                        </Col>
-                    </Row>
-                    <h3>Test what you havee learned here!</h3>
 
-                    <iframe
-                        src={katas}
-                        className="sand" title="boring-rosalind-51d51p"
-                        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid;
+                <div className="mt-5 courseContent">
+                    <Container>
+                        <Row>
+                            <Col md={{ span: 6, offset: 3 }}>
+                                <section className="courseContent" >
+                                    {
+                                        theory.map(e => {
+                                            return readStyles(e)
+                                        })
+                                    }
+
+                                </section>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+
+
+                <div className="courseTest mt-5">
+                    <Container>
+                        <h3 className="mb-5 testBox">Test what you have learned here!</h3>
+
+                        <iframe
+                            src="https://codesandbox.io/embed/boring-rosalind-51d51p?fontsize=14&hidenavigation=1&theme=dark"
+                            className="sand" title="boring-rosalind-51d51p"
+                            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid;
                          microphone; midi; payment; usb; vr; xr-spatial-tracking"
-                        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+                            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+                    </Container>
+                </div>
 
-                    <p>Try this resources if you want more information: <br />
-                        {resources}</p>
+                <div className="videoContainer mt-5">
+                    <Container>
+                        <iframe width="560" height="315" className="courseVideo" src={video} title="YouTube video player"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </Container>
+                </div>
 
-                    <h3>Keep learning!</h3>
-
-                    <iframe width="560" height="315" className="courseVideo" src={`${video}`} title="YouTube video player"
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-
-                    <p>{certificate}</p>
-                    <Form onSubmit={handleSubmit}>
-
-                        <div className="d-grid">
-                            <Button onClick={fireFinalActions} variant="dark" type="submit">FINISH</Button>
-                        </div>
-
-                    </Form>
-
-                </Container>
-            </>
+            </div >
     )
 }
 
