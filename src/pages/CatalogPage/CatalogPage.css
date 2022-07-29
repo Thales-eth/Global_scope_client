@@ -1,13 +1,9 @@
 .CatalogPage {
-    height: 110vh;
+    height: 130vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url('https://res.cloudinary.com/dqwiiycdv/image/upload/v1659035040/jeremy-perkins-uhjiu8FjnsQ-unsplash_ahzljq.jpg');
     background-size: cover;
     background-position: center;
 }
-
-/* .recommendedCourses {
-    background-color: black;
-} */
 
 .CatalogPage .title {
     padding-top: 8%;
@@ -73,4 +69,20 @@
 
 .courseTitle {
     max-width: 210px
+}
+
+.newCourse {
+    color: black;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+.newCourse:hover {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
 }

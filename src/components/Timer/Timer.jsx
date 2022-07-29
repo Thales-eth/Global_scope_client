@@ -3,7 +3,7 @@ import './Timer.css'
 
 function Timer() {
 
-    const [count, setCount] = useState(26)
+    const [count, setCount] = useState(320)
 
     const [musicSound, setMusicSound] = useState(true)
 

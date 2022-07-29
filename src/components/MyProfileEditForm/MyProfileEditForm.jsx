@@ -90,6 +90,9 @@ const MyProfileEditForm = () => {
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
 
+                        <h1>Edit your profile</h1>
+                        <hr />
+
                         <Form onSubmit={handleSubmit}>
 
                             <Form.Group className="mb-3" controlId="username">

@@ -6,6 +6,7 @@ import { MessageContext } from './../../contexts/userMessage.context'
 import { Button } from 'react-bootstrap';
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
+import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 import { useNavigate } from 'react-router-dom';
 import Timer from '../Timer/Timer';
 import './KataTemplate.css'
@@ -13,9 +14,17 @@ import './KataTemplate.css'
 
 const KataTemplate = ({ katas }) => {
 
+    let sun = 'https://res.cloudinary.com/dqwiiycdv/image/upload/v1659048408/sun-3-xxl_hptfh4.png'
+
+    let moon = 'https://res.cloudinary.com/dqwiiycdv/image/upload/v1659047417/moon-4-xxl_qs1phw.png'
+
     const [code, setCode] = useState(`console.log('hola, bebé')`)
 
     const [SuccesText, setSuccessText] = useState(`Next Kata`)
+
+    const [lightMode, setLightMode] = useState(false)
+
+    const [theme, setTheme] = useState(okaidia)
 
     const [isLoading, setIsLoading] = useState("")
 
@@ -43,7 +52,7 @@ const KataTemplate = ({ katas }) => {
         setIsLoading(true)
 
         codeService
-            .createFile(code, katas[counter].kataCode)  // Send kata code as props! 
+            .createFile(code, katas[counter].kataCode)
             .then(({ data }) => {
                 const { kataCode } = data
                 verifyCode(kataCode)
@@ -57,8 +66,6 @@ const KataTemplate = ({ katas }) => {
             .verifyCode(kataCode)
             .then(({ data }) => {
 
-                console.log('MIRA LO QUE LLEGA->', data)
-
                 setIsLoading(false)
 
 
@@ -66,16 +73,33 @@ const KataTemplate = ({ katas }) => {
                     setAnswer(true)
                     setMessage(true)
                     setFailure(false)
-                    console.log()
                     setShowMessage({ show: true, title: `✔️ 10/10!!`, text: 'Keep pushing 🎉' })
 
                 }
+
                 if (data.results.includes('FAIL')) {
-                    // Test failure results
                     setFailure(true)
-                    setWrongAnswer(data.results)
                     setMessage(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: `❌Wrong answer tho... :)` })
+
+                    let aux = data.results.split('Expected: ')
+                    let aux2 = data.results.split('Received: ')
+
+                    aux.shift()
+                    aux2.shift()
+
+                    aux = aux.map(e => e.split(" ")[0])
+                    aux2 = aux2.map(e => e.split(" ")[0])
+
+                    let expectArr = []
+
+                    aux.forEach((e, i) => {
+                        expectArr.push(`Expected ${e}, received ${aux2[i]}`)
+                    })
+
+                    let finalResult = expectArr.join(" ")
+
+                    setWrongAnswer(finalResult)
                 }
 
                 if (!data.results) {
@@ -92,30 +116,48 @@ const KataTemplate = ({ katas }) => {
 
     const updateCounter = () => {
 
-        if (counter < 2) {
+        if (counter < 5) {
             setCounter(prevCount => prevCount + 1)
             setAnswer(false)
 
-            counter === 1 && setSuccessText('You Won :)')
+            counter === 4 && setSuccessText('You Won :)')
         }
 
         else {
-            console.log('¿¿¿???')
             navigate('/catalog')
         }
 
     }
 
+    const changeLights = () => {
+        setLightMode(false)
+        setTheme(githubLight)
+    }
+
+    const changeDark = () => {
+        setLightMode(true)
+        setTheme(githubDark)
+    }
+
     return (
         <div className='kataPage'>
             <Timer />
-            <p className='kataDescription'>{katas[counter].description}</p>
+
+            <p className='kataDescription'>{katas[counter].description}
+                {
+
+                    lightMode ? <div className='logoBox'><img onClick={changeLights} className='lightSwitch' src={sun} alt="light-mode" /></div>
+                        : <div className='logoBox'><img onClick={changeDark} className='lightSwitch' src={moon} alt="dark-mode" /></div>
+
+                }
+            </p>
+
             <CodeMirror
                 className='codeMirror'
                 value={katas[counter].content}
                 height='400px'
                 width='600px'
-                theme={okaidia}
+                theme={theme}
                 extensions={[javascript({ jsx: true })]}
                 onChange={onChange}
 
@@ -130,11 +172,9 @@ const KataTemplate = ({ katas }) => {
             }
 
             {
-                failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
-                    Mistakes were made...
-                </Button>
+                failure && <button className='mistakesBtn' onClick={() => setModalShow(true)}>
+                </button>
             }
-
 
 
             <MyVerticallyCenteredModal wrongAnswer={wrongAnswer} show={modalShow}

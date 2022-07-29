@@ -5,7 +5,7 @@ const NewCoursePage = () => {
 
     return (
         <div className="NewCoursePage">
-            <h1>CREATE A NEW COURSE</h1>
+            <h1 className='mb-5'>Create a new Course!</h1>
             <NewCourseForm />
         </div>
     )

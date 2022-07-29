@@ -9,8 +9,6 @@ const KataRushPage = () => {
 
     const [katas, setKatas] = useState([])
 
-    // const [kata1, kata2, kata3, kata4, kata5, kata6, kata7, kata8, kata9, kata10] = katas
-
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {

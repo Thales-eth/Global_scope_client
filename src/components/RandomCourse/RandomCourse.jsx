@@ -38,7 +38,7 @@ const RandomCourse = () => {
 
         <Card style={{ width: '18rem' }}>
             <Link to={`/catalog/${_id}`}> <Card.Body>
-                <Card.Title>{coursename}</Card.Title>
+                <Card.Title className="courseTitle">{coursename}</Card.Title>
                 {
                     programlanguage === 'JavaScript' ?
                         <img className="miniLogo mt-3" src="https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736331/js_mcgdil.png" alt="logo" />

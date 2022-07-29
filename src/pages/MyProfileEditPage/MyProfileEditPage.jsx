@@ -4,7 +4,6 @@ import MyProfileEditForm from '../../components/MyProfileEditForm/MyProfileEditF
 const MyProfileEditPage = () => {
     return (
         <div className="editProfile">
-            <h1>Edit your profile</h1>
             <MyProfileEditForm />
         </div>
     )

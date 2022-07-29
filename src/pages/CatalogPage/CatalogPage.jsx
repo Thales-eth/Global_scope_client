@@ -64,9 +64,6 @@ const Catalog = () => {
             <div>
                 <div className="CatalogPage">
                     <h1 className="title mb-5">Our courses:</h1>
-                    {/* <hr /> */}
-                    {isAdmin ? <Link to={`/new-course`}><p>Create a new course</p></Link> : <></>}
-
                     <div className="courseCluster">
                         {
                             courses.map(e => {
@@ -106,8 +103,8 @@ const Catalog = () => {
                             })
                         }
                     </div>
+                    {isAdmin ? <Link to={`/new-course`}><button className="newCourse mt-5">Create a new course</button></Link> : <></>}
                 </div>
-                <hr />
             </div>
 
     )

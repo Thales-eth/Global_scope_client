@@ -22,9 +22,9 @@ const HomePage = () => {
                 </div>
 
                 <div className='logoCluster'>
-                    <Link to={'catalog/62d5545c9e44c1babbc983cd'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736331/js_mcgdil.png' alt="js logo" /></Link>
-                    <Link to={'catalog/62d567fee1bd7bb74942823d'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736342/python_zyk0je.png' alt="python logo" /></Link>
-                    <Link to={'catalog/62d820ae67c75f1d91078f4d'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736209/css_cb7fqc.png' alt="html css logo" /></Link>
+                    <Link to={'catalog/62e0fe6da26b8ec03126d6bf'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736331/js_mcgdil.png' alt="js logo" /></Link>
+                    <Link to={'catalog/62e2a4fa71e8f1870d23b145'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1658736342/python_zyk0je.png' alt="python logo" /></Link>
+                    <Link to={'catalog/62e10506a26b8ec03126d702'}><img src='https://res.cloudinary.com/dqwiiycdv/image/upload/v1659022207/800px-React_emwdeu.png' alt="html css logo" /></Link>
                 </div>
             </div>
         </>

@@ -109,25 +109,13 @@ const NewCourseForm = () => {
                             <Form.Control type="text" value={resources} onChange={handleChange} name="resources" />
                         </Form.Group>
 
-                        {/* <Form.Group className="mb-3" controlId="imageUrl">
-                <Form.Label>Theory</Form.Label>
-                <Form.Control type="text" value={theory} onChange={handleChange} name="theory" />
-            </Form.Group> */}
-                        {/* CHANGE CHECKBOX */}
                         <Form.Group className="mb-3" controlId="certificate">
                             <Form.Label>certificate</Form.Label>
                             <Form.Control type="text" value={certificate} onChange={handleChange} name="certificate" />
                         </Form.Group>
 
-                        {/* <Form.Group className="mb-3" controlId="imageUrl">
-                <Form.Label>Theory</Form.Label>
-                <TextEditor type="text" value={editor} onChange={handleChange} name="editor" />
-            </Form.Group> */}
-
-
-
                         <div className="d-grid">
-                            <Button variant="dark" type="submit">Create a new Course!</Button>
+                            <Button type="submit">Create a new Course!</Button>
                         </div>
 
                     </Form>

@@ -1,17 +1,25 @@
 import CodeMirror from '@uiw/react-codemirror';
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from "react-router-dom"
 import { MessageContext } from './../../contexts/userMessage.context'
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
+import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 import codeService from '../../services/code.services';
 import kataService from '../../services/kata.services';
 import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import './KataDetailsPage.css'
 
 const KataDetailsPage = () => {
+
+
+    let sun = 'https://res.cloudinary.com/dqwiiycdv/image/upload/v1659048408/sun-3-xxl_hptfh4.png'
+
+    let moon = 'https://res.cloudinary.com/dqwiiycdv/image/upload/v1659047417/moon-4-xxl_qs1phw.png'
+
+    const [lightMode, setLightMode] = useState(false)
+
+    const [theme, setTheme] = useState(okaidia)
 
     const { kata_id } = useParams()
 
@@ -34,8 +42,6 @@ const KataDetailsPage = () => {
     const [modalShow, setModalShow] = React.useState(false);
 
     const [code, setCode] = useState(`console.log('hola, bebé')`)
-
-    const navigate = useNavigate()
 
     let btnText = ""
 
@@ -125,79 +131,56 @@ const KataDetailsPage = () => {
             .catch(err => console.log('OPS', err))
     }
 
+    const changeLights = () => {
+        setLightMode(false)
+        setTheme(githubLight)
+    }
+
+    const changeDark = () => {
+        setLightMode(true)
+        setTheme(githubDark)
+    }
+
     return (
-        // <div className='kataPage'>
-        //     <Row>
-        //         <Col md={{ span: 4, offset: 1 }}>
-        //             <p>{kata.instructions}</p>
-        //         </Col>
-        //         <Col md={{ span: 4, offset: 1 }}>
-        //             <p className='kataDescription'>{kata.description}</p>
-        //             <CodeMirror
-        //                 className='codeMirror'
-        //                 value={kata.content}
-        //                 height='400px'
-        //                 width='600px'
-        //                 theme={okaidia}
-        //                 extensions={[javascript({ jsx: true })]}
-        //                 onChange={onChange}
 
-        //             />
+        <div className='kataPage'>
 
-
-        //             {
-        //                 answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
-        //                     <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
-        //                         {btnText}
-        //                     </button>
-
-        //             }
-
-        //             {
-        //                 failure && <Button className='mt-3' variant="danger" onClick={() => setModalShow(true)}>
-        //                     Mistakes were made...
-        //                 </Button>
-        //             }
-        //         </Col>
-        //     </Row>
-
-        //     {/* <Button onClick={refresh} variant='dark'>Refresh</Button> */}
-        <>
-
-            <div className='kataPage'>
-                <p className='kataDescription'>{kata.description}</p>
-                <CodeMirror
-                    className='codeMirror'
-                    value={kata.content}
-                    height='400px'
-                    width='600px'
-                    theme={okaidia}
-                    extensions={[javascript({ jsx: true })]}
-                    onChange={onChange}
-
-                />
-
+            <p className='kataDescription'>{kata.description}
                 {
-                    answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
-                        <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
-                            {btnText}
-                        </button>
+
+                    lightMode ? <div className='logoBox'><img onClick={changeLights} className='lightSwitch' src={sun} alt="light-mode" /></div>
+                        : <div className='logoBox'><img onClick={changeDark} className='lightSwitch' src={moon} alt="dark-mode" /></div>
 
                 }
+            </p>
 
+            <CodeMirror
+                className='codeMirror'
+                value={kata.content}
+                height='400px'
+                width='600px'
+                theme={theme}
+                extensions={[javascript({ jsx: true })]}
+                onChange={onChange}
+            />
 
-
-                <MyVerticallyCenteredModal className='mistakesModal' wrongAnswer={wrongAnswer} show={modalShow}
-                    onHide={() => setModalShow(false)} />
-
-                {
-                    failure && <button className='mistakesBtn mt-3' onClick={() => setModalShow(true)}>
+            {
+                answer ? <Link to={'/katas'}><button className='submitKataSuccess mt-3'>I want more Katas!</button></Link> :
+                    <button onClick={sendCode} disabled={isLoading} className='submitKataBtn mt-3'>
+                        {btnText}
                     </button>
-                }
-            </div>
 
+            }
 
-        </>
+            <MyVerticallyCenteredModal className='mistakesModal' wrongAnswer={wrongAnswer} show={modalShow}
+                onHide={() => setModalShow(false)} />
+
+            {
+                failure && <button className='mistakesBtn' onClick={() => setModalShow(true)}>
+                </button>
+            }
+        </div>
+
     )
 }
 
