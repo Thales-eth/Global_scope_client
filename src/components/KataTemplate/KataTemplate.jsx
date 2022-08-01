@@ -8,6 +8,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import codeService from '../../services/code.services';
 import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import Timer from '../Timer/Timer';
+import parseErrorMessage from '../../utils/parseErrorMessage';
 
 const KataTemplate = ({ katas }) => {
 
@@ -79,24 +80,7 @@ const KataTemplate = ({ katas }) => {
                     setMessage(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: `❌Wrong answer tho... :)` })
 
-                    let aux = data.results.split('Expected: ')
-                    let aux2 = data.results.split('Received: ')
-
-                    aux.shift()
-                    aux2.shift()
-
-                    aux = aux.map(e => e.split(" ")[0])
-                    aux2 = aux2.map(e => e.split(" ")[0])
-
-                    let expectArr = []
-
-                    aux.forEach((e, i) => {
-                        expectArr.push(`Expected ${e}, received ${aux2[i]}`)
-                    })
-
-                    let finalResult = expectArr.join(" ")
-
-                    setWrongAnswer(finalResult)
+                    setWrongAnswer(parseErrorMessage(data.results))
                 }
 
                 if (!data.results) {

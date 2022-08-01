@@ -1,13 +1,14 @@
-import CodeMirror from '@uiw/react-codemirror';
 import React, { useState, useContext, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom"
 import { MessageContext } from './../../contexts/userMessage.context'
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
+import CodeMirror from '@uiw/react-codemirror';
 import codeService from '../../services/code.services';
 import kataService from '../../services/kata.services';
 import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
+import parseErrorMessage from '../../utils/parseErrorMessage';
 import './KataDetailsPage.css'
 
 const KataDetailsPage = () => {
@@ -97,24 +98,7 @@ const KataDetailsPage = () => {
                     setMessage(true)
                     setShowMessage({ show: true, title: `Nice try, buddy`, text: `❌Wrong answer tho... :)` })
 
-                    let aux = data.results.split('Expected: ')
-                    let aux2 = data.results.split('Received: ')
-
-                    aux.shift()
-                    aux2.shift()
-
-                    aux = aux.map(e => e.split(" ")[0])
-                    aux2 = aux2.map(e => e.split(" ")[0])
-
-                    let expectArr = []
-
-                    aux.forEach((e, i) => {
-                        expectArr.push(`Expected ${e}, received ${aux2[i]}`)
-                    })
-
-                    let finalResult = expectArr.join(" ")
-
-                    setWrongAnswer(finalResult)
+                    setWrongAnswer(parseErrorMessage(data.results))
 
                 }
 
