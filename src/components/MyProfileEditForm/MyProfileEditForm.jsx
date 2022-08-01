@@ -2,19 +2,13 @@ import { useContext, useState, useEffect } from "react"
 import { Row, Col, Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../contexts/auth.context"
-import authService from './../../services/auth.services'
 import uploadServices from "./../../services/upload.services"
 import userService from "../../services/user.services"
-import { useRef } from "react"
 import Loader from "../../components/Loader/Loader"
-
-
 
 const MyProfileEditForm = () => {
 
     const { user, setUser, authenticateUser, storeToken } = useContext(AuthContext)
-
-    console.log('---soy el user----', user)
 
     const [userData, setuserData] = useState(user)
     const [isLoading, setIsLoading] = useState(false)
@@ -76,10 +70,7 @@ const MyProfileEditForm = () => {
     useEffect(() => {
         loadUser()
 
-        // authenticateUser()
-        // console.log('USUARIO', user)
     }, [])
-
 
     const { username, email } = userData
 

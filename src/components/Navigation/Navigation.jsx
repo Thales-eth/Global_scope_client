@@ -1,11 +1,10 @@
-import './Navigation.css'
 import { Nav, Navbar, Container } from 'react-bootstrap'
 import { AuthContext } from '../../contexts/auth.context'
-import { MessageContext } from './../../contexts/userMessage.context'
-import { useNavigate, Link } from 'react-router-dom'
+import { MessageContext } from '../../contexts/userMessage.context'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import userService from "../../services/user.services"
-import { useLocation } from 'react-router-dom';
+import './Navigation.css'
 
 const NavBar = () => {
 
@@ -29,16 +28,14 @@ const NavBar = () => {
     }
 
     useEffect(() => {
-        user !== null ?
+        user !== null &&
             userService
                 .getUser(user._id)
                 .then(({ data }) => {
                     setuserData(data)
-                    console.log('------usuario-----', data)
                 })
                 .catch(err => console.error(err))
 
-            : console.log('USERDATA', userData)
     }, [user])
 
 

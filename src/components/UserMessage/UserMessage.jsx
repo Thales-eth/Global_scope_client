@@ -1,7 +1,7 @@
-import './UserMessage.css'
 import { useContext } from 'react';
-import Toast from 'react-bootstrap/Toast'
 import { MessageContext } from '../../contexts/userMessage.context';
+import Toast from 'react-bootstrap/Toast'
+import './UserMessage.css'
 
 function UserMessage() {
 

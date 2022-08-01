@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext } from "react"
-import CourseService from "../../services/courses.services"
 import { Link, useNavigate } from "react-router-dom"
-import { Card, Button, Container, Row, Col } from 'react-bootstrap'
-import Loader from "../../components/Loader/Loader"
-import userService from "../../services/user.services"
+import { Card, Button } from 'react-bootstrap'
 import { AuthContext } from "../../contexts/auth.context"
+import CourseService from "../../services/courses.services"
+import userService from "../../services/user.services"
+import Loader from "../../components/Loader/Loader"
 import './CatalogPage.css'
-import RandomKata from "../../components/RandomKata/RandomKata"
-import RandomCourse from "../../components/RandomCourse/RandomCourse"
 
 const Catalog = () => {
 
@@ -19,23 +17,18 @@ const Catalog = () => {
 
     const { user, authenticateUser } = useContext(AuthContext)
 
-    const [loggedUser, setloggedUser] = useState(user)
-
-
     const navigate = useNavigate()
 
     useEffect(() => {
         loadCourses()
-        user !== null ?
+        user !== null &&
             userService
                 .getUser(user._id)
                 .then(({ data }) => {
-                    console.log('------usuario-----', data)
                     data.role === 'ADMIN' ? setIsAdmin(true) : setIsAdmin(false)
                 })
                 .catch(err => console.error(err))
 
-            : console.log('USERDATA', user)
     }, [user])
 
     const loadCourses = () => {

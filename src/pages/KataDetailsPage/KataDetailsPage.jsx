@@ -78,16 +78,11 @@ const KataDetailsPage = () => {
 
     const verifyCode = (kataCode) => {
 
-        console.log('LLEGA EL CODE, NO?-->', kataCode)
-
         codeService
             .verifyCode(kataCode)
             .then(({ data }) => {
 
-                console.log('MIRA LO QUE LLEGA->', data.results)
-
                 setIsLoading(false)
-
 
                 if (data.results.includes('PASS')) {
                     setAnswer(true)

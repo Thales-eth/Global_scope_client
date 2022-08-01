@@ -1,8 +1,7 @@
-//----------------------------------------------------------------------------------------------------------------------------
-import './TextEditor.css'
-import 'draft-js/dist/Draft.css';
 import React, { Component } from 'react';
 import { EditorState, Editor, convertToRaw, convertFromRaw, RichUtils, getDefaultKeyBinding } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+import './TextEditor.css'
 
 class TextEditor extends Component {
 
@@ -69,14 +68,6 @@ class TextEditor extends Component {
             )
         );
     }
-
-    // onChange = (editorState) => {
-    //     const contentState = editorState.getCurrentContent();
-    //     console.log('content state', convertToRaw(contentState));
-    //     this.setState({
-    //         editorState,
-    //     });
-    // }
 
     saveContent = (content) => {
         window.localStorage.setItem('content', JSON.stringify(convertToRaw(content)));

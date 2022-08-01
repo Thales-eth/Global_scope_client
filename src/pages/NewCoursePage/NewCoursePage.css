@@ -35,3 +35,7 @@
     color: white;
     border-color: white;
 }
+
+.RichEditor-styleButton {
+    color: black !important;
+}

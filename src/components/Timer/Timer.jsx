@@ -22,7 +22,6 @@ function Timer() {
         }, 1000)
 
         if (count === 0) {
-            console.log('HOLA ENTRÉ')
             clearInterval(id)
         }
 
@@ -30,10 +29,6 @@ function Timer() {
             clearInterval(id)
         }
 
-    }, [count])
-
-    useEffect(() => {
-        document.title = humanHour
     }, [count])
 
     let mins = (parseInt(count / 60))

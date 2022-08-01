@@ -1,8 +1,8 @@
-import CourseService from "../../services/courses.services"
 import { useState, useEffect, useContext } from "react"
-import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate } from "react-router-dom"
+import { Card, Button } from 'react-bootstrap'
 import { AuthContext } from "../../contexts/auth.context"
+import CourseService from "../../services/courses.services"
 import userService from "../../services/user.services"
 
 const RandomCourse = () => {

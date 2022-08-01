@@ -19,7 +19,6 @@ const MyProfilePage = () => {
             .getUser(_id)
             .then(({ data }) => {
                 setEnrolledCourses(data.courses)
-                console.log('USUARIO', data)
                 setUserData(data)
             })
             .catch(err => console.log(err))

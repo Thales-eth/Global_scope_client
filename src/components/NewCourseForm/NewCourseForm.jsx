@@ -3,8 +3,6 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import CourseService from '../../services/courses.services'
 import TextEditor from '../TextEditor/TextEditor'
-import uploadServices from "./../../services/upload.services"
-
 
 const NewCourseForm = () => {
 
@@ -45,9 +43,7 @@ const NewCourseForm = () => {
     }
 
     const theoryContent = content => {
-        console.log('ESTOY EN EL PADRE', content)
         setCourseData({ ...courseData, theory: content })
-        console.log('DATOS: ', courseData)
     }
 
     const { coursename, description, programlanguage, subject, theory, test, katas, video, resources, certificate } = courseData

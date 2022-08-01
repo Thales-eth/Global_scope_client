@@ -1,8 +1,7 @@
-import { useEffect } from "react"
-import kataService from "../../services/kata.services"
-import { Button, Card } from 'react-bootstrap'
+import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
-import { useState } from "react"
+import { Button, Card } from 'react-bootstrap'
+import kataService from "../../services/kata.services"
 
 const RandomKata = () => {
 

@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
-import { Row, Col, Form, Button, Container } from "react-bootstrap"
+import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import { Row, Col, Form, Button, Container } from "react-bootstrap"
 import authService from './../../services/auth.services'
 import uploadServices from "./../../services/upload.services"
 
@@ -29,7 +29,6 @@ const RegisterForm = () => {
         authService
             .register(signupData)
             .then(({ data }) => {
-                console.log('data:', data)
                 navigate('/login')
             })
             .catch(err => console.log(err))

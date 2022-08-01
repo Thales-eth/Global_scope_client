@@ -38,7 +38,7 @@ const CourseDetailsPage = () => {
 
     const readStyles = (text) => {
         let style = text.text
-        console.log(text)
+
         if (text.inlineStyleRanges.length === 0) {
             text.type === 'header-one' ? style = `<h1>${text.text}</h1>` : style += ''
             text.type === 'header-two' ? style = `<h2>${text.text}</h2>` : style += ''

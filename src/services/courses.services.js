@@ -31,7 +31,6 @@ class CourseServices {
     }
 
     getOneCourse(course_id) {
-        console.log('cliente', course_id)
         return this.api.get(`/getOneCourse/${course_id}`)
     }
 

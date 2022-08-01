@@ -1,16 +1,13 @@
-import CodeMirror from '@uiw/react-codemirror';
 import React, { useState, useContext } from 'react';
-import codeService from '../../services/code.services';
-import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import { MessageContext } from './../../contexts/userMessage.context'
-import { Button } from 'react-bootstrap';
 import { javascript } from '@codemirror/lang-javascript';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 import { useNavigate } from 'react-router-dom';
+import CodeMirror from '@uiw/react-codemirror';
+import codeService from '../../services/code.services';
+import MyVerticallyCenteredModal from '../../components/WrongAnswerModal/WrongAnswerModal';
 import Timer from '../Timer/Timer';
-import './KataTemplate.css'
-
 
 const KataTemplate = ({ katas }) => {
 
@@ -116,15 +113,15 @@ const KataTemplate = ({ katas }) => {
 
     const updateCounter = () => {
 
-        if (counter < 5) {
+        if (counter < 4) {
             setCounter(prevCount => prevCount + 1)
             setAnswer(false)
 
-            counter === 4 && setSuccessText('You Won :)')
+            counter === 3 && setSuccessText('You Won :)')
         }
 
         else {
-            navigate('/catalog')
+            navigate('/')
         }
 
     }
